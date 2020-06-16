@@ -1,0 +1,14 @@
+<view class="share">
+  <view class="share-title">本周最想分享的三点:</view>
+  <block wx:for="{{3}}" wx:key="*this">
+  <view class="share-content">
+    <view class="share-content-left">{{index+1}}</view>
+    <view class="share-content-right">
+      <view><textarea></textarea></view>
+      <view><textarea></textarea></view>
+      <view><textarea></textarea></view>
+    </view>
+  </view>
+  </block>
+</view>
+<text class="back">上一页</text>

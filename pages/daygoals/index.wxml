@@ -1,0 +1,49 @@
+<!-- 日计划页面 -->
+<view class="daily">
+  <view class="daily-left">
+    <view class="daily-left-content">
+      <block wx:for="{{titleArr}}" wx:key="id">
+        <view class="daily-left-title">{{item.name}}</view>
+      </block>
+    </view>
+    <view class="category">
+      <view class="cateName">按ABC分类</view>
+      <view class="cateName">起止时间</view>
+      <view class="cateName">
+        <view >今天事项 要事第一</view>
+        <view >A类最重要 B类其次 C类次重要</view>
+      </view>
+      <view class="cateName">完成打'√'</view>
+    </view>
+    <!-- 内容部分 -->
+    <block wx:for="{{17}}">
+    <view class="description">
+      <view class="content"><input type="text"/></view>
+      <view class="content">
+        <input type="text"/>
+      </view>
+      <view class="content">
+        <textarea class="todayThings"></textarea>
+      </view>
+      <view class="content">√</view>
+    </view>
+    </block>
+  </view>
+  <view class="daily-center"></view>
+  <view class="daily-right">
+    <view class="daily-right-title">
+      <text >总结</text>
+      <text >改进</text>
+    </view>
+    <block wx:for="{{18}}">
+      <view class="des">
+        <textarea></textarea>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- 底部导航 -->
+<view class="footer">
+  <view class="footer-left">上一页</view>
+  <view class="footer-right">下一页</view>
+</view>

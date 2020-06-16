@@ -1,0 +1,61 @@
+<view class="index">
+  <!-- 顶部title -->
+  <text class="index-header">高效工作 快乐生活</text>
+  <view class="index-title">改变从今天开始</view>
+  <!-- 照片部分 -->
+  <!-- 没有照片显示时 -->
+  <block wx:if="{{userInfo}}">
+    <view class="btns">
+      <button open-type="getUserInfo" bind:tap="handleGetUserInfo">我的照片</button>
+    </view>
+  </block>
+  <!-- <view class="myphoto">
+    <view class="userinfo">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="widthFix"></image>
+        <button open-type="getUserInfo" class="btn">点击获取照片</button>
+    </view>
+  </view> -->
+  <!-- 个人信息部分 -->
+  <view class="userInfo">
+    <view class="user-name">
+      <view class="user-name-title">
+        <text>姓名:</text>
+        <text class="name">樊文花</text>
+      </view>
+      <view class="user-name-phone">
+        <text>手机:</text>
+        <text class="name">13012345678</text>
+      </view>
+    </view>
+    <view>
+      <text>单位:</text>
+      <text>广州樊文花化妆品有限公司</text>
+    </view>
+    <view>
+      <text>地址:</text>
+      <text>广州珠江新城K11管理服务中心</text>
+    </view>
+    <view class="user-name">
+      <view class="user-name-title">
+        <text>QQ:</text>
+        <text class="name">123456890</text>
+      </view>
+      <view class="user-name-phone">
+        <text>微信:</text>
+        <text class="name">13012345678</text>
+      </view>
+    </view>
+    <view class="user-name">
+      <view class="user-name-title">
+        <text>邮箱:</text>
+        <text class="name">123456890</text>
+      </view>
+      <view class="user-name-phone"></view>
+    </view>
+  </view>
+  <view class="user-dream">
+    <block wx:for="{{userDream}}" wx:key="url">
+        <view bind:tap="goToelsePage" data-url="{{item.url}}" class="user-dream-item">{{item.name}}</view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,101 @@
+<!-- 顶部tab栏 -->
+<view class="tabbar">
+  <view class="tab">主页</view>
+  <view class="tab">上周</view>
+  <view class="tab">下周</view>
+  <view class="tab">
+    第
+    <input type="number" />
+    周
+  </view>
+</view>
+<!-- 表格数据部分 -->
+<view class="week">
+  <!-- 左边表格 -->
+  <view class="week-left">
+    <view class="week-left-item">上周总结</view>
+    <view class="week-left-item">目标完成情况</view>
+    <block wx:for="{{5}}">
+      <view class="week-left-item">
+      <textarea class="mytext"></textarea>
+    </view>
+    </block>
+    <view class="week-left-item">未完成目标的原因及障碍</view>
+    <block wx:for="{{3}}">
+      <view class="week-left-item">
+      <textarea class="mytext"></textarea>
+    </view>
+    </block>
+    <view class="week-left-item">客服障碍的对策和方法</view>
+    <block wx:for="{{3}}">
+      <view class="week-left-item">
+      <textarea class="mytext"></textarea>
+    </view>
+    </block>
+    <view class="week-left-item">客服障碍的对策和方法</view>
+    <block wx:for="{{3}}">
+      <view class="week-left-item">
+      <textarea class="mytext"></textarea>
+    </view>
+    </block>
+  </view>
+  <!--中间条纹线 -->
+  <view class="week-center"></view>
+  <!-- 右边表格 -->
+  <view class="week-right">
+    <view class="week-right-title">
+      <view class="left">序号</view>
+      <view class="center">
+        <view class="icon">
+          <text>本周目标</text>
+        </view>
+        <view class="description">
+          <view>1.请在上周五的规划填写</view>
+          <view>2.按目标重要程度规划有限顺序</view>
+          <view>3.完成一项,在完成时限处打钩'√'</view>
+        </view>
+      </view>
+      <view class="right">完成期限</view>
+    </view>
+    <block wx:for="{{17}}" wx:key="*this">
+      <view class="week-right-content">
+        <view class="left">{{index+1}}</view>
+        <view class="center">
+          <textarea class="mytext"></textarea>
+        </view>
+        <view class="right">√</view>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- 底部图片以及其他计划部分 -->
+  <view class="footer">
+    <view class="footer-left">
+    </view>
+    <view class="footer-center"></view>
+    <view class="footer-right">
+      <view class="footer-right-title">
+        <view class="title-left">本周其他目标</view>
+        <view class="title-right">
+          请注意规划你的生活，平衡你的人生，一下目标做到打'√',本周有特别的日子吗？请标注(生日/节日/纪念日)
+        </view>
+      </view>
+      <block wx:for="{{3}}">
+      <view class="footer-right-content">
+         <view class="content-left">学习计划</view>
+         <view class="content-center">
+           <textarea class="mytext"></textarea>
+         </view>
+        <view class="content-right">
+          <textarea class="mytext"></textarea>
+        </view>
+      </view>
+      </block>
+    </view>
+  </view>
+  <!-- 底部跳转链接 -->
+  <view class="footer-url">
+    <text/>
+    <navigator class="url" url="/pages/daygoals/index">下一页
+    </navigator>
+  </view>

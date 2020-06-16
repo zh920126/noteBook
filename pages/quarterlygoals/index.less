@@ -1,0 +1,120 @@
+.tabbar {
+  margin: 30rpx 0;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .tab {
+    width: 120rpx;
+    height: 50rpx;
+    border: 1rpx solid #000;
+    border-radius: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24rpx;
+    color: #219d9c;
+  }
+}
+
+.table {
+  margin: 20rpx;
+  border: 20rpx solid #00cccc;
+  font-size: 22rpx;
+  color: #219d9c;
+
+  &-title {
+    height: 30rpx;
+    background: #009999;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .th {
+    height: 50rpx;
+    display: flex;
+
+    .td {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      border: 1rpx solid #a6a6a6;
+
+      &:nth-child(n+1) {
+        border-left: 0rpx;
+      }
+
+      &:last-child {
+        flex: 1.5;
+      }
+    }
+  }
+  .tr {
+    display: flex;
+    .td1 {
+      flex: 1;
+      border: 1rpx solid #a6a6a6;
+      border-top: 0rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .td2{
+      flex: 4.5;
+      .td3{
+        display: flex;
+        height: 80rpx;
+        &-son{
+          flex: 1;
+          border: 1rpx solid #a6a6a6;
+          border-top: 0rpx;
+          border-left: 0rpx;
+          &:last-child{
+            flex: 1.5;
+          }
+          textarea{
+            width: 100%;
+            height: 100%;
+          }
+          .ps{
+            color: #219d9c;
+          }
+        }
+      }
+    }
+  }
+}
+.quarter{
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.unfinished-part{
+  height: 70rpx;
+  border: 1rpx solid #a6a6a6;
+  textarea{
+    width: 100%;
+    height: 100%;
+  }
+}
+.reason{
+  display: flex;
+  height: 70rpx;
+  border-bottom: 1rpx solid #a6a6a6;
+  text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  textarea{
+    margin-left: 30rpx;
+    flex: 1;
+    height: 100%;
+  }
+}

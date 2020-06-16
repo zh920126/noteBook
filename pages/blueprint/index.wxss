@@ -1,0 +1,172 @@
+.tabbar {
+  margin: 30rpx 0;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tabbar .tab {
+  width: 160rpx;
+  height: 50rpx;
+  border: 1rpx solid #000;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #219d9c;
+}
+.tabbar .on {
+  color: #f00;
+}
+.table {
+  border: 20rpx solid #00cccc;
+  font-size: 22rpx;
+  color: #219d9c;
+}
+.table-title {
+  height: 30rpx;
+  background: #009999;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-thead {
+  height: 50rpx;
+  display: flex;
+}
+.table-thead text {
+  width: 120rpx;
+  border: 1rpx solid #a6a6a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-thead text:nth-child(2) {
+  flex: 1;
+  border-left: 0rpx;
+}
+.table .title-head {
+  display: flex;
+}
+.table .title-head > view {
+  font-size: 18rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #a6a6a6;
+  border-left: 0rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table .title-head > view:first-child {
+  width: 40rpx;
+  border-left: 1rpx solid #a6a6a6;
+}
+.table .title-head > view:nth-child(2),
+.table .title-head > view:nth-child(3) {
+  width: 38rpx;
+}
+.table .title-head > view:nth-child(4) {
+  width: 150rpx;
+}
+.table .title-head > view:nth-child(5) {
+  flex: 1;
+}
+.table .title-head > view:nth-child(6),
+.table .title-head > view:nth-child(7) {
+  width: 75rpx;
+}
+.table .content {
+  display: flex;
+}
+.table .content-left {
+  width: 40rpx;
+  height: 420rpx;
+  border: 1rpx solid #a6a6a6;
+  box-sizing: border-box;
+  border-top: 0rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table .content .contain {
+  flex: 1;
+}
+.table .content-right {
+  display: flex;
+  height: 60rpx;
+  width: 100%;
+}
+.table .content-right > view {
+  border: 1rpx solid #a6a6a6;
+  border-left: 0rpx;
+  border-top: 0rpx;
+  box-sizing: border-box;
+}
+.table .content-right > view input,
+.table .content-right > view textarea {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+.table .content-right > view:nth-child(1),
+.table .content-right > view:nth-child(2) {
+  width: 38rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table .content-right > view:nth-child(3) {
+  width: 150rpx;
+}
+.table .content-right > view:nth-child(4) {
+  flex: 1;
+}
+.table .content-right > view:nth-child(5),
+.table .content-right > view:nth-child(6) {
+  width: 75rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table .content-right > view:nth-child(5) picker,
+.table .content-right > view:nth-child(6) picker {
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.table .content-right > view:nth-child(5) picker text:last-child,
+.table .content-right > view:nth-child(6) picker text:last-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table .tr {
+  display: flex;
+  height: 160rpx;
+}
+.table .tr .td1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  border: 1rpx solid #a6a6a6;
+  border-top: 0px;
+}
+.table .tr .td2 {
+  flex: 1;
+  border: 1rpx solid #a6a6a6;
+  border-top: 0rpx;
+  border-left: 0rpx;
+}
+.table .tr .td2 textarea {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}

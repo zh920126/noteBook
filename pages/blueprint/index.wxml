@@ -1,0 +1,80 @@
+<!-- 顶部导航 -->
+<view class="tabbar">
+  <block wx:for="{{tabs}}" wx:key="index">
+    <view bind:tap="handleClick" data-index="{{index}}" class="tab {{changeIndex===index? 'on':''}}">
+      {{item.name}}
+    </view>
+  </block>
+</view>
+<!-- 表格部分--人生蓝图1 -->
+<view class="table" wx:if="{{changeIndex===1}}">
+  <view class="table-title">人生蓝图表一</view>
+  <view class="table-thead">
+    <text>类别</text>
+    <text>近期目标(1~3年内)</text>
+  </view>
+  <block wx:for="{{arr}}" wx:key="id">
+    <view class="tr">
+      <view class="td1">{{item.name}}</view>
+      <view class="td2">
+        <textarea bind:blur="handleUpdate3" data-index="{{index}}" maxlength="-1" value="{{item.content}}"></textarea>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 表格部分--人生蓝图2 -->
+<view class="table" wx:elif="{{changeIndex===2}}">
+  <view class="table-title">人生蓝图表二</view>
+  <view class="table-thead">
+    <text>类别</text>
+    <text>中期目标(5年内)</text>
+  </view>
+  <block wx:for="{{arr2}}" wx:key="id">
+    <view class="tr">
+      <view class="td1">{{item.name}}</view>
+      <view class="td2">
+        <textarea maxlength="-1" bind:blur="handleUpdate5" data-index="{{index}}" maxlength="-1" value="{{item.content}}"></textarea>
+      </view>
+    </view>
+  </block>
+</view>
+<!-- 表格--人生蓝图3 -->
+<view class="table" wx:elif="{{changeIndex===3}}">
+  <view class="table-title">人生蓝图表三</view>
+  <view class="title-head">
+    <block wx:for="{{cate}}" wx:key="id">
+      <view class="">{{item.name}}</view>
+    </block>
+  </view>
+  <block wx:for="{{cateList}}" wx:key="index">
+  <view class="content">
+    <view class="content-left" style="height:{{item.children*60}}rpx">{{item.name}}</view>
+    <view class="contain">
+    <block wx:for="{{item.children}}" wx:key="index" wx:for-item="item2" wx:for-index="index">
+      <view class="content-right">
+        <view>
+          <input type="text" bindblur="handleCate" data-info="{{item2}}"
+           value="{{item2.type}}"/>
+        </view>
+        <view>{{item2.count}}</view>
+        <view>
+          <textarea maxlength="-1" bindblur="handleContent" data-info="{{item2}}" value="{{item2.content}}"></textarea>
+        </view>
+        <view>
+          <textarea maxlength="-1" bindblur="handleMeasures" data-info="{{item2}}" value="{{item2.measures}}"></textarea>
+        </view>
+        <view>
+         <picker mode="date" value="{{item2.startTime}}" bind:change="bindDateChange" data-info="{{item2}}">
+            <view class="picker">
+              <text style="opacity:0">选择时间</text>
+              <text>{{item2.startTime}}</text>
+            </view>
+          </picker>
+        </view>
+        <view>√</view>
+      </view>
+    </block>
+    </view>
+  </view>
+  </block>
+</view>

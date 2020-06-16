@@ -1,0 +1,81 @@
+.index {
+  padding: 40rpx 80rpx 0 80rpx;
+  color: #219d9c;
+  font-size: 24rpx;
+}
+.index-title {
+  font-size: 38rpx;
+  font-weight: bold;
+}
+.index .btns {
+  width: 200rpx;
+  height: 280rpx;
+  margin: 60rpx auto;
+  border: 1rpx dashed #000;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.index .btns button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0);
+  font-size: 28rpx;
+  font-weight: normal;
+  color: inherit;
+}
+.index .userInfo > view {
+  margin-bottom: 30rpx;
+  display: flex;
+}
+.index .userInfo > view > text:nth-child(1) {
+  font-weight: bold;
+}
+.index .userInfo > view > text:nth-child(2) {
+  flex: 1;
+  border-bottom: 1rpx solid #219d9c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.index .userInfo .user-name {
+  display: flex;
+}
+.index .userInfo .user-name-title,
+.index .userInfo .user-name-phone {
+  display: flex;
+}
+.index .userInfo .user-name-title text:nth-child(1),
+.index .userInfo .user-name-phone text:nth-child(1) {
+  width: 80rpx;
+  font-weight: bold;
+}
+.index .userInfo .user-name-title .name,
+.index .userInfo .user-name-phone .name {
+  width: 200rpx;
+  border-bottom: 1rpx solid #219d9c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.index .user-dream {
+  display: flex;
+}
+.index .user-dream-item {
+  width: 130rpx;
+  height: 56rpx;
+  border: 1rpx solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.index .user-dream-item:nth-child(1) {
+  margin-left: 0;
+}

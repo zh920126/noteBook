@@ -1,0 +1,69 @@
+.tabbar {
+  margin: 30rpx 0;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tabbar .tab {
+  width: 160rpx;
+  height: 50rpx;
+  border: 1rpx solid #000;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24rpx;
+  color: #219d9c;
+}
+.table {
+  margin: 20rpx;
+  border: 20rpx solid #00cccc;
+  font-size: 22rpx;
+  color: #219d9c;
+}
+.table-title {
+  height: 30rpx;
+  background: #009999;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-thead {
+  height: 50rpx;
+  display: flex;
+}
+.table-thead text {
+  width: 120rpx;
+  border: 1rpx solid #a6a6a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.table-thead text:nth-child(2) {
+  flex: 1;
+  border-left: 0rpx;
+}
+.table .tr {
+  display: flex;
+  height: 160rpx;
+}
+.table .tr .td1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  border: 1rpx solid #a6a6a6;
+  border-top: 0px;
+}
+.table .tr .td2 {
+  flex: 1;
+  border: 1rpx solid #a6a6a6;
+  border-top: 0rpx;
+  border-left: 0rpx;
+}
+.table .tr .td2 textarea {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,20 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/blueprint/index",
+    "pages/quarterlygoals/index",
+    "pages/monthygoals/index",
+    "pages/weekgoals/index",
+    "pages/daygoals/index",
+    "pages/share/index",
+    "pages/test/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#219d9c",
+    "navigationBarTitleText": "成长日记",
+    "navigationBarTextStyle":"white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

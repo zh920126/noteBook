@@ -1,0 +1,45 @@
+page {
+  background: #00cccc;
+}
+page .share {
+  background: #fff;
+  margin: 20rpx;
+}
+page .share-title {
+  height: 40rpx;
+  border: 1rpx solid #a6a6a6;
+  text-indent: 2em;
+}
+page .share-content {
+  display: flex;
+}
+page .share-content-left {
+  width: 50rpx;
+  height: 240rpx;
+  border: 1rpx solid #a6a6a6;
+  border-top: 0rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+page .share-content-right {
+  flex: 1;
+}
+page .share-content-right > view {
+  height: 80rpx;
+  border: 1rpx solid #a6a6a6;
+  box-sizing: border-box;
+  border-top: 0rpx;
+  border-left: 0rpx;
+}
+page .share-content-right > view textarea {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+page .back {
+  margin: 40rpx;
+  padding: 5rpx;
+  border: 1rpx solid #000;
+}

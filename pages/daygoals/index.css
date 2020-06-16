@@ -1,0 +1,33 @@
+.daily {
+  display: flex;
+  border: 20rpx solid #00cccc;
+  font-size: 22rpx;
+  color: #219d9c;
+}
+.daily-left {
+  flex: 1;
+  display: flex;
+  background: #009999;
+  color: #fff;
+}
+.daily-left view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.daily-left view:first-child {
+  width: 50rpx;
+}
+.daily-left view:nth-child(2) {
+  width: 85rpx;
+}
+.daily-left view:last-child {
+  flex: 1;
+}
+.daily-center {
+  width: 20rpx;
+  background: #00cccc;
+}
+.daily-right {
+  flex: 1;
+}
