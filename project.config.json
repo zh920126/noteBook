@@ -58,8 +58,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/blueprint/index",
-					"pathName": "pages/blueprint/index",
+					"name": "pages/weekgoals/index",
+					"pathName": "pages/weekgoals/index",
 					"query": "",
 					"scene": null
 				},

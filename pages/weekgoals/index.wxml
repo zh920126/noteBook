@@ -15,27 +15,27 @@
   <view class="week-left">
     <view class="week-left-item">上周总结</view>
     <view class="week-left-item">目标完成情况</view>
-    <block wx:for="{{5}}">
+    <block wx:for="{{weekPerformance}}" wx:key="*this">
       <view class="week-left-item">
-      <textarea class="mytext"></textarea>
+      <textarea class="mytext" value="{{item.content}}" bindblur="handleWeekPerformance" data-info="{{item}}" data-index="{{index}}"></textarea>
     </view>
     </block>
     <view class="week-left-item">未完成目标的原因及障碍</view>
-    <block wx:for="{{3}}">
+    <block wx:for="{{reason}}" wx:key="*this">
       <view class="week-left-item">
-      <textarea class="mytext"></textarea>
+      <textarea class="mytext" bindblur="handleReason" data-info="{{item}}" value="{{item.content}}"></textarea>
     </view>
     </block>
     <view class="week-left-item">客服障碍的对策和方法</view>
-    <block wx:for="{{3}}">
+    <block wx:for="{{service}}" wx:key="*this">
       <view class="week-left-item">
-      <textarea class="mytext"></textarea>
+      <textarea class="mytext" bindblur="handleService" data-info="{{item}}" value="{{item.content}}"></textarea>
     </view>
     </block>
-    <view class="week-left-item">客服障碍的对策和方法</view>
-    <block wx:for="{{3}}">
+    <view class="week-left-item">本周创新与收获</view>
+    <block wx:for="{{harvest}}" wx:key="*this">
       <view class="week-left-item">
-      <textarea class="mytext"></textarea>
+      <textarea class="mytext" bindblur="handleHarvest" data-info="{{item}}" value="{{item.content}}"></textarea>
     </view>
     </block>
   </view>
@@ -80,7 +80,7 @@
           请注意规划你的生活，平衡你的人生，一下目标做到打'√',本周有特别的日子吗？请标注(生日/节日/纪念日)
         </view>
       </view>
-      <block wx:for="{{3}}">
+      <block wx:for="{{3}}" wx:key="*this">
       <view class="footer-right-content">
          <view class="content-left">学习计划</view>
          <view class="content-center">

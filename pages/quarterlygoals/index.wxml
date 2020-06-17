@@ -1,10 +1,11 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
-  <block wx:for="{{tabs}}">
-    <view class="tab">{{item.name}}</view>
+  <block wx:for="{{tabs}}" wx:key="id">
+    <view class="tab {{changeIndex===index?'on':''}}" bind:tap="changeIndex" data-index="{{index}}">{{item.name}}</view>
   </block>
 </view>
 <!-- 表格部分 -->
+<block wx:if="{{changeIndex===1}}">
 <view class="table">
   <view class="table-title">第一季度目标</view>
   <view class="th">
@@ -19,21 +20,19 @@
   <view class="tr">
     <view class="td1">{{item.name}}</view>
     <view class="td2">
-      <block wx:for="{{item.children}}" wx:for-item="item2">
+      <block wx:for="{{item.children}}" wx:key="index" wx:for-item="item2">
         <view class="aa">
           <view class="td3">
             <view class="td3-son">
-              <textarea placeholder-class="ps" class="" placeholder="{{item2.name}}"></textarea>
+              <input type="texttac" value="{{item2.importanceLevel}}" bindblur="handleLevel" data-info="{{item2}}" />
             </view>
             <view class="td3-son">
-              <textarea placeholder-class="ps" class=""></textarea>
+              <textarea value="{{item2.content}}" data-info="{{item2}}" bindblur="handleContent" class=""></textarea>
             </view>
             <view class="td3-son">
-              <textarea placeholder-class="ps" class=""></textarea>
+              <textarea value="{{item2.measures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
             </view>
-            <view class="td3-son">
-              <textarea placeholder-class="ps" class=""></textarea>
-            </view>
+            <view class="td3-son"></view>
           </view>
         </view>
       </block>
@@ -54,3 +53,4 @@
   </view>
   </block>
 </view>
+</block>

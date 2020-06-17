@@ -362,7 +362,7 @@ Page({
     let {
       index
     } = e.currentTarget.dataset
-    console.log(index);
+    // console.log(index);
     this.setData({
       changeIndex: index
     })
@@ -534,13 +534,13 @@ Page({
     // this.setData({
     //   cateList
     // })
-    console.log(data);
+    // console.log(data);
     let res=await app.myAxios({
       url:'/anonymous/updateBlueprintDetailed',
       method:'post',
       data
     })
-    console.log(res);
+    // console.log(res);
     this.viewBlPrint3()
   },
   // 蓝图3类别更新
@@ -559,7 +559,7 @@ Page({
     this.setData({
       cateList
     })
-    console.log(data);
+    // console.log(data);
     let res=await app.myAxios({
       url:'/anonymous/updateBlueprintDetailed',
       method:'post',
@@ -583,7 +583,7 @@ Page({
     this.setData({
       cateList
     })
-    console.log(data);
+    // console.log(data);
     let res=await app.myAxios({
       url:'/anonymous/updateBlueprintDetailed',
       method:'post',
@@ -607,13 +607,13 @@ Page({
     this.setData({
       cateList
     })
-    console.log(data);
+    // console.log(data);
     let res=await app.myAxios({
       url:'/anonymous/updateBlueprintDetailed',
       method:'post',
       data
     })
-    console.log(res);
+    // console.log(res);
     this.viewBlPrint3()
   },
   // 蓝图3是否完成
@@ -631,13 +631,13 @@ Page({
     this.setData({
       cateList
     })
-    console.log(data);
+    // console.log(data);
     let res=await app.myAxios({
       url:'/anonymous/updateBlueprintDetailed',
       method:'post',
       data
     })
-    console.log(res);
+    // console.log(res);
     this.viewBlPrint3()
   },
   /**
@@ -691,7 +691,7 @@ Page({
   onShow: function () {
     // 初始化数据
     this.setData({
-      changeIndex: 3,
+      changeIndex: 1,
       completionTime: 3
     })
     // 页面数据刷新

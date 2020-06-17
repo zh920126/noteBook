@@ -1,9 +1,12 @@
 // pages/quarterlygoals/index.js
+const app= getApp();
+import regeneratorRuntime from '../../lib/runtime';
+
 Page({
 
   /**
    * 页面的初始数据
-   */
+   */ 
   data: {
     tabs:[
       {
@@ -33,39 +36,81 @@ Page({
         name:'工作计划',
         children:[
           {
-            id:2,
-            name:'aa'
+            complete:false,
+            content:'',
+            importanceLevel:'0',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'工作计划',
+            year:new Date().getFullYear()
           },
           {
-            id:3,
-            name:'bb'
+            complete:false,
+            content:'',
+            importanceLevel:'',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'工作计划',
+            year:new Date().getFullYear()
           },
           {
-            id:4,
-            name:'cc'
+            complete:false,
+            content:'',
+            importanceLevel:'',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'工作计划',
+            year:new Date().getFullYear()
           },
           {
-            id:5,
-            name:'dd'
+            complete:false,
+            content:'',
+            importanceLevel:'',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'工作计划',
+            year:new Date().getFullYear()
           },
         ]
       },
       {
-        id:6,
+        id:2,
         name:'其他目标',
         children:[
           {
-            id:7,
-            name:'学习计划',
+            complete:false,
+            content:'',
+            importanceLevel:'学习计划',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'其他目标',
+            year:new Date().getFullYear()
           },
           {
-            id:8,
-            name:'健康计划',
+            complete:false,
+            content:'',
+            importanceLevel:'健康计划',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'其他目标',
+            year:new Date().getFullYear()
           },
           {
-            id:9,
-            name:'本季度反省',
-          }
+            complete:false,
+            content:'',
+            importanceLevel:'本季度反省',
+            measures:'',
+            quarter:'',
+            quarterOrMonthFlag:'quarter',
+            type:'其他目标',
+            year:new Date().getFullYear()
+          },
         ]
       }
     ],
@@ -82,14 +127,113 @@ Page({
         id:3,
         name:'本季度创新与收获:'
       }
-    ]
+    ],
+    changeIndex:1
   },
-
+  // tab栏切换
+  changeIndex(e){
+    let {index}=e.currentTarget.dataset
+    this.setData({
+      changeIndex:index
+    })
+    if(index===0){
+      // 点击主页就进行跳转
+      wx.navigateTo({
+        url: '/pages/index/index',
+      });
+    }
+  },
+  // 重要级别修改
+  async handleLevel(e){
+    let {value}=e.detail
+    let {info}=e.currentTarget.dataset
+    let data={
+      complete:info.complete,
+      content:info.content,
+      importanceLevel:value,
+      measures:info.measures,
+      quarter:this.data.changeIndex,
+      userId:wx.getStorageSync('userID'),
+      year:info.year
+    }
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/updateOrInsertAirms',
+      data
+    })
+    console.log(res);
+  },
+  // 目标内容修改
+  async handleContent(e){
+    let {value}=e.detail
+    let {info}=e.currentTarget.dataset
+    let data={
+      complete:info.complete,
+      content:value,
+      importanceLevel:info.importanceLevel,
+      measures:info.measures,
+      quarter:this.data.changeIndex,
+      userId:wx.getStorageSync('userID'),
+      year:info.year
+    }
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/updateOrInsertAirms',
+      data
+    })
+    console.log(res);
+  },
+  // 方法和措施修改
+  async handleMeasures(e){
+    let {value}=e.detail
+    let {info}=e.currentTarget.dataset
+    let data={
+      complete:info.complete,
+      content:info.content,
+      importanceLevel:info.importanceLevel,
+      measures:value,
+      quarter:this.data.changeIndex,
+      userId:wx.getStorageSync('userID'),
+      year:info.year
+    }
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/updateOrInsertAirms',
+      data
+    })
+    console.log(res);
+  },
+  // 获取用户季度数据
+  async geyUserMsg(){
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/findAimsByCondition',
+      data:{
+        userId:wx.getStorageSync('userID'),
+        quarter:this.changeIndex,
+        year:new Date().getFullYear()
+      }
+    })
+    console.log(res);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  async onLoad(options) {
+    this.setData({
+      changeIndex:1
+    })
+    // 加载就需要获取index为1的数据
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/findAimsByCondition',
+      data:{
+        userId:wx.getStorageSync('userID'),
+        quarter:this.changeIndex,
+        year:new Date().getFullYear()
+      }
+    })
+    console.log(res);
   },
 
   /**
@@ -103,7 +247,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**

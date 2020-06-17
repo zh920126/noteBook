@@ -22,6 +22,7 @@
   border: 1rpx solid #a6a6a6;
   min-height: 0;
   margin: 0 5rpx;
+  text-align: center;
 }
 .week {
   display: flex;
@@ -47,6 +48,7 @@
 .week-left-item .mytext {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 .week-center {
   width: 20rpx;
@@ -114,6 +116,7 @@
 .week-right-content .center .mytext {
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 .footer {
   display: flex;
@@ -177,6 +180,7 @@
 .footer-right-content .content-right .mytext {
   width: 100%;
   height: 100%;
+  text-align: cneter;
 }
 .footer-url {
   display: flex;
