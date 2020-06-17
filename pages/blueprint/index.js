@@ -30,7 +30,7 @@ Page({
         name: '家庭生活'
       },
       {
-        name: '学习成长'
+        name: '健康计划'
       },
       {
         name: '人际关系'
@@ -49,7 +49,7 @@ Page({
         name: '家庭生活'
       },
       {
-        name: '学习成长'
+        name: '健康计划'
       },
       {
         name: '人际关系'
@@ -88,85 +88,270 @@ Page({
             count:1,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
           {
             parentType: '事业(工作)目标',
             count:2,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
           {
             parentType: '事业(工作)目标',
             count:3,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
           {
             parentType: '事业(工作)目标',
             count:4,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
           {
             parentType: '事业(工作)目标',
             count:5,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
           {
             parentType: '事业(工作)目标',
             count:6,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
           {
             parentType: '事业(工作)目标',
             count:7,
             type:'',
             content:'',
-            id:'',
             measures:'',
-            startTime:''
+            startTime:'',
+            complete:false
           },
         ]
       },
       {
         name: '财富目标',
-        children: 4
+        children: [
+          {
+            parentType: '财富目标',
+            count:1,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '财富目标',
+            count:2,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '财富目标',
+            count:3,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '财富目标',
+            count:4,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          }
+        ]
       },
       {
         name: '家庭生活',
-        children: 4
+        children: [
+          {
+            parentType: '家庭生活',
+            count:1,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '家庭生活',
+            count:2,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '家庭生活',
+            count:3,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '家庭生活',
+            count:4,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          }
+        ]
       },
       {
         name: '学习成长',
-        children: 4
+        children: [
+          {
+            parentType: '学习成长',
+            count:1,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '学习成长',
+            count:2,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '学习成长',
+            count:3,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '学习成长',
+            count:4,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          }
+        ]
       },
       {
         name: '人际关系',
-        children: 4
+        children: [
+          {
+            parentType: '人际关系',
+            count:1,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '人际关系',
+            count:2,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '人际关系',
+            count:3,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '人际关系',
+            count:4,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          }
+        ]
       },
       {
         name: '健康计划',
-        children: 4
+        children: [
+          {
+            parentType: '健康计划',
+            count:1,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '健康计划',
+            count:2,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '健康计划',
+            count:3,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          },
+          {
+            parentType: '健康计划',
+            count:4,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          }
+        ]
       },
     ],
     changeIndex: 1,
@@ -198,11 +383,10 @@ Page({
         method: 'post',
         url: '/anonymous/queryBlueprint'
       })
-      // 数据还原
       let {arr2}=this.data
       if (res.statusCode === 200 && res.data.message === '查询成功') {
         let userBluePrint = res.data.result.content
-        console.log(res);
+        // console.log(res);
         for (let i = 0; i < arr2.length; i++) {
           userBluePrint.forEach(v => {
             if (arr2[i].name === v.type) {
@@ -221,6 +405,35 @@ Page({
         });
       }
 
+    }else{
+      this.viewBlPrint3()
+    }
+  },
+  // 人生蓝图3，更新视图
+  async viewBlPrint3(){
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/queryBlueprintDetailed',
+      data:{
+        userid:wx.getStorageSync('userID')
+      }
+    })
+    // console.log(res);
+    // 更新视图
+    if(res.statusCode===200&&res.data.result.content){
+      let content=res.data.result.content
+      let {cateList}=this.data
+      for(let i=0;i<cateList.length;i++){
+        content.forEach(v=>{
+          if(cateList[i].name===v.parentType){
+            cateList[i]['children'][v.count-1]=v
+          }
+        })
+      }
+      // 更新页面视图
+      this.setData({
+        cateList
+      })
     }
   },
   // 失去焦点时,更新目标信息
@@ -310,16 +523,17 @@ Page({
     let {value}=e.detail
     let data=e.currentTarget.dataset.info
     data.startTime=value
+    data.userid=wx.getStorageSync('userID');
     // 同时需要更新视图层
-    let {cateList}=this.data
-    cateList.forEach(v=>{
-      if(v.name===data.parentType){
-        v.children[data.count-1]=data
-      }
-    })
-    this.setData({
-      cateList
-    })
+    // let {cateList}=this.data
+    // cateList.forEach(v=>{
+    //   if(v.name===data.parentType){
+    //     v.children[data.count-1]=data
+    //   }
+    // })
+    // this.setData({
+    //   cateList
+    // })
     console.log(data);
     let res=await app.myAxios({
       url:'/anonymous/updateBlueprintDetailed',
@@ -327,12 +541,14 @@ Page({
       data
     })
     console.log(res);
+    this.viewBlPrint3()
   },
   // 蓝图3类别更新
   async handleCate(e){
     let {value}=e.detail
     let data=e.currentTarget.dataset.info
     data.type=value
+    data.userid=wx.getStorageSync('userID');
     // 同时需要更新视图层
     let {cateList}=this.data
     cateList.forEach(v=>{
@@ -349,13 +565,14 @@ Page({
       method:'post',
       data
     })
-    console.log(res);
+    this.viewBlPrint3()
   },
   // 蓝图3目标内容更新
   async handleContent(e){
     let {value}=e.detail
     let data=e.currentTarget.dataset.info
     data.content=value
+    data.userid=wx.getStorageSync('userID');
     // 同时需要更新视图层
     let {cateList}=this.data
     cateList.forEach(v=>{
@@ -372,13 +589,14 @@ Page({
       method:'post',
       data
     })
-    console.log(res);
+    this.viewBlPrint3()
   },
   // 蓝图3方法措施更新
   async handleMeasures(e){
     let {value}=e.detail
     let data=e.currentTarget.dataset.info
     data.measures=value
+    data.userid=wx.getStorageSync('userID');
     // 同时需要更新视图层
     let {cateList}=this.data
     cateList.forEach(v=>{
@@ -396,6 +614,31 @@ Page({
       data
     })
     console.log(res);
+    this.viewBlPrint3()
+  },
+  // 蓝图3是否完成
+  async handleComplete(e){
+    let data=e.currentTarget.dataset.info
+    data.complete=!data.complete
+    data.userid=wx.getStorageSync('userID');
+    // 同时需要更新视图层
+    let {cateList}=this.data
+    cateList.forEach(v=>{
+      if(v.name===data.parentType){
+        v.children[data.count-1]=data
+      }
+    })
+    this.setData({
+      cateList
+    })
+    console.log(data);
+    let res=await app.myAxios({
+      url:'/anonymous/updateBlueprintDetailed',
+      method:'post',
+      data
+    })
+    console.log(res);
+    this.viewBlPrint3()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -413,11 +656,9 @@ Page({
       method: 'post',
       url: '/anonymous/queryBlueprint'
     })
-    // 数据还原
-    console.log(data);
     if (res.statusCode === 200 && res.data.message === '查询成功') {
       let userBluePrint = res.data.result.content
-      console.log(res);
+      // console.log(res);
       for (let i = 0; i < arr.length; i++) {
         userBluePrint.forEach(v => {
           if (arr[i].name === v.type) {

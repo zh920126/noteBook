@@ -48,7 +48,7 @@
   </view>
   <block wx:for="{{cateList}}" wx:key="index">
   <view class="content">
-    <view class="content-left" style="height:{{item.children*60}}rpx">{{item.name}}</view>
+    <view class="content-left" style="height:{{item.children.length*60}}rpx">{{item.name}}</view>
     <view class="contain">
     <block wx:for="{{item.children}}" wx:key="index" wx:for-item="item2" wx:for-index="index">
       <view class="content-right">
@@ -67,11 +67,11 @@
          <picker mode="date" value="{{item2.startTime}}" bind:change="bindDateChange" data-info="{{item2}}">
             <view class="picker">
               <text style="opacity:0">选择时间</text>
-              <text>{{item2.startTime}}</text>
+              <text>{{item2.startTime==null?'':item2.startTime}}</text>
             </view>
           </picker>
         </view>
-        <view>√</view>
+        <view class="{{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
       </view>
     </block>
     </view>
