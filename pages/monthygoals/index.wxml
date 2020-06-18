@@ -1,13 +1,18 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
-  <view class="tab">主页</view>
-  <view class="tab">上月</view>
-  <view class="tab">下月</view>
-  <view class="tab">第<input type="number" /> 月</view>
+  <view class="tab" bind:tap="handleToIndex">主页</view>
+  <view class="tab" bind:tap="handleLastMonth">上月</view>
+  <view class="tab" bind:tap="handleNextMonth">下月</view>
+  <view class="tab">
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <view class="picker">第 {{month}} 月</view>
+    </picker>
+  </view>
 </view>
 <!-- 表格部分 -->
+<block>
 <view class="table">
-  <view class="table-title">一月目标</view>
+  <view class="table-title">{{year}}年{{month}}月目标</view>
   <view class="th">
     <view class="td">类别</view>
     <view class="td">重要级别</view>
@@ -20,38 +25,38 @@
   <view class="tr">
     <view class="td1">{{item.name}}</view>
     <view class="td2">
-      <block wx:for="{{item.children}}" wx:for-item="item2">
+      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2">
         <view class="aa">
           <view class="td3">
             <view class="td3-son">
-              <textarea placeholder-class="ps" class="" placeholder="{{item2.name}}"></textarea>
+              <input type="texttac" value="{{item2.importanceLevel}}"
+              bindblur="handleLevel" data-info="{{item2}}" />
             </view>
             <view class="td3-son">
-              <textarea placeholder-class="ps" class=""></textarea>
+              <textarea value="{{item2.content}}" data-info="{{item2}}" bindblur="handleContent" class=""></textarea>
             </view>
             <view class="td3-son">
-              <textarea placeholder-class="ps" class=""></textarea>
+              <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
             </view>
-            <view class="td3-son">
-              <textarea placeholder-class="ps" class=""></textarea>
-            </view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
           </view>
         </view>
       </block>
     </view>
   </view>
   </block>
-  <!-- 季度总结部分 -->
+  <!-- 月度总结部分 -->
   <view class="quarter">
-    本月度的目标总结(请在每月度末回到本业对应上表总结分析)
+    本月份的目标总结(请在每月末回到本业对应上表总结分析)
   </view>
   <view class="unfinished-part">
-    <textarea></textarea>
+    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
   </view>
-  <block wx:for="{{reasonArr}}" wx:key="id">
+  <block wx:for="{{reasonArr}}" wx:key="*this">
   <view class="reason">
-    <text>{{item.name}}</text>
-    <textarea></textarea>
+    <text>{{item.type}}</text>
+    <textarea value="{{item.content}}" bindblur="handleReason" data-info="{{item}}"></textarea>
   </view>
   </block>
 </view>
+</block>

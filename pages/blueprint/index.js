@@ -363,17 +363,21 @@ Page({
       index
     } = e.currentTarget.dataset
     // console.log(index);
-    this.setData({
-      changeIndex: index
-    })
+    
     if (index === 0) {
       // 点击主页时，返回到主页页面
       wx.navigateTo({
         url: '/pages/index/index',
       });
     } else if (index === 1) {
+      this.setData({
+        changeIndex: index
+      })
       this.onLoad()
     } else if (index === 2) {
+      this.setData({
+        changeIndex: index
+      })
       let data = {
         completionTime: 5,
         userid: wx.getStorageSync('userID')
@@ -406,6 +410,9 @@ Page({
       }
 
     }else{
+      this.setData({
+        changeIndex: index
+      })
       this.viewBlPrint3()
     }
   },

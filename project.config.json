@@ -58,8 +58,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/quarterlygoals/index",
-					"pathName": "pages/quarterlygoals/index",
+					"name": "pages/monthygoals/index",
+					"pathName": "pages/monthygoals/index",
 					"query": "",
 					"scene": null
 				},

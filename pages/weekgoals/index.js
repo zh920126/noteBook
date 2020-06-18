@@ -43,15 +43,15 @@ Page({
     service:[
       {
         content: '',
-        type: '客服障碍的对策和方法'
+        type: '克服障碍的对策和方法'
       },
       {
         content: '',
-        type: '客服障碍的对策和方法'
+        type: '克服障碍的对策和方法'
       },
       {
         content: '',
-        type: '客服障碍的对策和方法'
+        type: '克服障碍的对策和方法'
       },
     ],
     harvest:[
@@ -70,90 +70,90 @@ Page({
     ],
     weeklyPlan:[
       {
-        complete:false,
+        index:1,
         content:'',
-        type:'1',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:2,
         content:'',
-        type:'2',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:3,
         content:'',
-        type:'3',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:4,
         content:'',
-        type:'4',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:5,
         content:'',
-        type:'5',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:6,
         content:'',
-        type:'6',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:7,
         content:'',
-        type:'7',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:8,
         content:'',
-        type:'8',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:9,
         content:'',
-        type:'9',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:10,
         content:'',
-        type:'10',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:11,
         content:'',
-        type:'11',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:12,
         content:'',
-        type:'12',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:13,
         content:'',
-        type:'13',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:14,
         content:'',
-        type:'14',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:15,
         content:'',
-        type:'15',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:16,
         content:'',
-        type:'16',
+        type:'本周目标'
       },
       {
-        complete:false,
+        index:17,
         content:'',
-        type:'17',
-      },
+        type:'本周目标'
+      }
     ]
   },
   // 更新完成状态

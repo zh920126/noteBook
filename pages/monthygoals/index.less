@@ -1,10 +1,8 @@
 .tabbar {
   margin: 30rpx 0;
-  padding: 0 20rpx;
   display: flex;
   justify-content: space-around;
   align-items: center;
-
   .tab {
     width: 120rpx;
     height: 50rpx;
@@ -15,18 +13,23 @@
     align-items: center;
     font-size: 24rpx;
     color: #219d9c;
+    box-sizing: border-box;
     input{
       width: 45rpx;
       height: 26rpx;
       border: 1rpx solid #a6a6a6;
       min-height: 0;
       margin: 0 5rpx;
+      text-align: center;
+      display: flex;
+      // justify-content: center;
+      // align-items: center;
     }
   }
 }
 
 .table {
-  margin: 20rpx;
+  // margin: 20rpx;
   border: 20rpx solid #00cccc;
   font-size: 22rpx;
   color: #219d9c;
@@ -41,7 +44,7 @@
   }
 
   .th {
-    height: 50rpx;
+    height: 60rpx;
     display: flex;
 
     .td {
@@ -51,13 +54,13 @@
       align-items: center;
       box-sizing: border-box;
       border: 1rpx solid #a6a6a6;
-
-      &:nth-child(n+1) {
+      
+      &:nth-child(n+2) {
         border-left: 0rpx;
       }
 
       &:last-child {
-        flex: 1.5;
+        flex: .5;
       }
     }
   }
@@ -72,7 +75,7 @@
       align-items: center;
     }
     .td2{
-      flex: 4.5;
+      flex: 3.5;
       .td3{
         display: flex;
         height: 80rpx;
@@ -82,11 +85,20 @@
           border-top: 0rpx;
           border-left: 0rpx;
           &:last-child{
-            flex: 1.5;
+            flex: .5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          input{
+            height: 100%;
+            width: 100%;
+            text-align: center;
           }
           textarea{
             width: 100%;
             height: 100%;
+            text-align: center;
           }
           .ps{
             color: #219d9c;
@@ -108,6 +120,7 @@
   textarea{
     width: 100%;
     height: 100%;
+    text-align: center;
   }
 }
 .reason{
@@ -123,5 +136,6 @@
     margin-left: 30rpx;
     flex: 1;
     height: 100%;
+    text-align: center;
   }
 }

@@ -3,7 +3,7 @@ const app = getApp();
 import regeneratorRuntime from '../../lib/runtime';
 
 Page({
-  /**
+  /** 
    * 页面的初始数据
    */
   data: {
@@ -461,14 +461,14 @@ Page({
           }
         ],
         workIndex.forEach((v, i) => {
-          table[0].children.unshift(v)
+          table[0].children[i]=v
           table[0].children.length = 5
         });
       otherTarget.forEach((v, i) => {
-        table[1].children.unshift(v)
+        table[1].children[i]=v
         table[1].children.length = 3
       });
-      console.log(table[0].children);
+      console.log(table[1].children);
       this.setData({
         table
       })

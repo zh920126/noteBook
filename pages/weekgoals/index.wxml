@@ -26,12 +26,12 @@
       <textarea class="mytext" bindblur="handleReason" data-info="{{item}}" value="{{item.content}}"></textarea>
     </view>
     </block>
-    <view class="week-left-item">客服障碍的对策和方法</view>
+    <view class="week-left-item">克服障碍的对策和方法</view>
     <block wx:for="{{service}}" wx:key="*this">
       <view class="week-left-item">
       <textarea class="mytext" bindblur="handleService" data-info="{{item}}" value="{{item.content}}"></textarea>
     </view>
-    </block>
+    </block> 
     <view class="week-left-item">本周创新与收获</view>
     <block wx:for="{{harvest}}" wx:key="*this">
       <view class="week-left-item">
@@ -57,9 +57,9 @@
       </view>
       <view class="right">完成期限</view>
     </view>
-    <block wx:for="{{weeklyPlan}}" wx:key="*this">
+    <block wx:for="{{weeklyPlan}}" wx:key="index">
       <view class="week-right-content">
-        <view class="left">{{item.type}}</view>
+        <view class="left">{{item.index}}</view>
         <view class="center">
           <textarea class="mytext"></textarea>
         </view>
