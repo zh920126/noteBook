@@ -57,13 +57,13 @@
       </view>
       <view class="right">完成期限</view>
     </view>
-    <block wx:for="{{17}}" wx:key="*this">
+    <block wx:for="{{weeklyPlan}}" wx:key="*this">
       <view class="week-right-content">
-        <view class="left">{{index+1}}</view>
+        <view class="left">{{item.type}}</view>
         <view class="center">
           <textarea class="mytext"></textarea>
         </view>
-        <view class="right">√</view>
+        <view class="right {{item2.complete===true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
       </view>
     </block>
   </view>

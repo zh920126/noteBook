@@ -68,6 +68,96 @@ Page({
         type: '本周创新与收获'
       },
     ],
+    weeklyPlan:[
+      {
+        complete:false,
+        content:'',
+        type:'1',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'2',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'3',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'4',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'5',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'6',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'7',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'8',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'9',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'10',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'11',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'12',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'13',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'14',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'15',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'16',
+      },
+      {
+        complete:false,
+        content:'',
+        type:'17',
+      },
+    ]
+  },
+  // 更新完成状态
+  async handleComplete(e){
 
   },
   // 创新与收获
@@ -240,6 +330,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad() {
+    // 获取总结数据
     let data = {
       userid: wx.getStorageSync('userID'),
       timeSign: this.getTime(),
@@ -296,6 +387,8 @@ Page({
         harvest
       })
     }
+    // 获取周计划数据
+    
   },
 
   /**

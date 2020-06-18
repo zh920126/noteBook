@@ -3,7 +3,7 @@
   <block wx:for="{{tabs}}" wx:key="id">
     <view class="tab {{changeIndex===index?'on':''}}" bind:tap="changeIndex" data-index="{{index}}">{{item.name}}</view>
   </block>
-</view>
+</view> 
 <!-- 表格部分 -->
 <block wx:if="{{changeIndex===1}}">
 <view class="table">
@@ -20,19 +20,20 @@
   <view class="tr">
     <view class="td1">{{item.name}}</view>
     <view class="td2">
-      <block wx:for="{{item.children}}" wx:key="index" wx:for-item="item2">
+      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2">
         <view class="aa">
           <view class="td3">
             <view class="td3-son">
-              <input type="texttac" value="{{item2.importanceLevel}}" bindblur="handleLevel" data-info="{{item2}}" />
+              <input type="texttac" value="{{item2.importanceLevel}}"
+              bindblur="handleLevel" data-info="{{item2}}" />
             </view>
             <view class="td3-son">
               <textarea value="{{item2.content}}" data-info="{{item2}}" bindblur="handleContent" class=""></textarea>
             </view>
             <view class="td3-son">
-              <textarea value="{{item2.measures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
+              <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
             </view>
-            <view class="td3-son"></view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
           </view>
         </view>
       </block>
@@ -44,12 +45,162 @@
     本季度的目标总结(请在每季度末回到本业对应上表总结分析)
   </view>
   <view class="unfinished-part">
-    <textarea></textarea>
+    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
   </view>
-  <block wx:for="{{reasonArr}}" wx:key="id">
+  <block wx:for="{{reasonArr}}" wx:key="*this">
   <view class="reason">
-    <text>{{item.name}}</text>
-    <textarea></textarea>
+    <text>{{item.type}}</text>
+    <textarea value="{{item.content}}" bindblur="handleReason" data-info="{{item}}"></textarea>
+  </view>
+  </block>
+</view>
+</block>
+<block wx:if="{{changeIndex===2}}">
+<view class="table">
+  <view class="table-title">第一季度目标</view>
+  <view class="th">
+    <view class="td">类别</view>
+    <view class="td">重要级别</view>
+    <view class="td">目标内容</view>
+    <view class="td">方法和措施</view>
+    <view class="td">完成的打'√'</view>
+  </view>
+  <!-- 表格内容部分 -->
+  <block wx:for="{{table}}" wx:key="id">
+  <view class="tr">
+    <view class="td1">{{item.name}}</view>
+    <view class="td2">
+      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2">
+        <view class="aa">
+          <view class="td3">
+            <view class="td3-son">
+              <input type="texttac" value="{{item2.importanceLevel}}"
+              bindblur="handleLevel" data-info="{{item2}}" />
+            </view>
+            <view class="td3-son">
+              <textarea value="{{item2.content}}" data-info="{{item2}}" bindblur="handleContent" class=""></textarea>
+            </view>
+            <view class="td3-son">
+              <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
+            </view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  </block>
+  <!-- 季度总结部分 -->
+  <view class="quarter">
+    本季度的目标总结(请在每季度末回到本业对应上表总结分析)
+  </view>
+  <view class="unfinished-part">
+    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
+  </view>
+  <block wx:for="{{reasonArr}}" wx:key="*this">
+  <view class="reason">
+    <text>{{item.type}}</text>
+    <textarea value="{{item.content}}" bindblur="handleReason" data-info="{{item}}"></textarea>
+  </view>
+  </block>
+</view>
+</block>
+<block wx:if="{{changeIndex===3}}">
+<view class="table">
+  <view class="table-title">第一季度目标</view>
+  <view class="th">
+    <view class="td">类别</view>
+    <view class="td">重要级别</view>
+    <view class="td">目标内容</view>
+    <view class="td">方法和措施</view>
+    <view class="td">完成的打'√'</view>
+  </view>
+  <!-- 表格内容部分 -->
+  <block wx:for="{{table}}" wx:key="id">
+  <view class="tr">
+    <view class="td1">{{item.name}}</view>
+    <view class="td2">
+      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2">
+        <view class="aa">
+          <view class="td3">
+            <view class="td3-son">
+              <input type="texttac" value="{{item2.importanceLevel}}"
+              bindblur="handleLevel" data-info="{{item2}}" />
+            </view>
+            <view class="td3-son">
+              <textarea value="{{item2.content}}" data-info="{{item2}}" bindblur="handleContent" class=""></textarea>
+            </view>
+            <view class="td3-son">
+              <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
+            </view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  </block>
+  <!-- 季度总结部分 -->
+  <view class="quarter">
+    本季度的目标总结(请在每季度末回到本业对应上表总结分析)
+  </view>
+  <view class="unfinished-part">
+    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
+  </view>
+  <block wx:for="{{reasonArr}}" wx:key="*this">
+  <view class="reason">
+    <text>{{item.type}}</text>
+    <textarea value="{{item.content}}" bindblur="handleReason" data-info="{{item}}"></textarea>
+  </view>
+  </block>
+</view>
+</block>
+<block wx:if="{{changeIndex===4}}">
+<view class="table">
+  <view class="table-title">第一季度目标</view>
+  <view class="th">
+    <view class="td">类别</view>
+    <view class="td">重要级别</view>
+    <view class="td">目标内容</view>
+    <view class="td">方法和措施</view>
+    <view class="td">完成的打'√'</view>
+  </view>
+  <!-- 表格内容部分 -->
+  <block wx:for="{{table}}" wx:key="id">
+  <view class="tr">
+    <view class="td1">{{item.name}}</view>
+    <view class="td2">
+      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2">
+        <view class="aa">
+          <view class="td3">
+            <view class="td3-son">
+              <input type="texttac" value="{{item2.importanceLevel}}"
+              bindblur="handleLevel" data-info="{{item2}}" />
+            </view>
+            <view class="td3-son">
+              <textarea value="{{item2.content}}" data-info="{{item2}}" bindblur="handleContent" class=""></textarea>
+            </view>
+            <view class="td3-son">
+              <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
+            </view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  </block>
+  <!-- 季度总结部分 -->
+  <view class="quarter">
+    本季度的目标总结(请在每季度末回到本业对应上表总结分析)
+  </view>
+  <view class="unfinished-part">
+    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
+  </view>
+  <block wx:for="{{reasonArr}}" wx:key="*this">
+  <view class="reason">
+    <text>{{item.type}}</text>
+    <textarea value="{{item.content}}" bindblur="handleReason" data-info="{{item}}"></textarea>
   </view>
   </block>
 </view>
