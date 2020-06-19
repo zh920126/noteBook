@@ -30,7 +30,7 @@ Page({
         name: '家庭生活'
       },
       {
-        name: '健康计划'
+        name: '学习成长'
       },
       {
         name: '人际关系'
@@ -49,7 +49,7 @@ Page({
         name: '家庭生活'
       },
       {
-        name: '健康计划'
+        name: '学习成长'
       },
       {
         name: '人际关系'
@@ -427,6 +427,7 @@ Page({
     })
     // console.log(res);
     // 更新视图
+    // console.log(res);
     if(res.statusCode===200&&res.data.result.content){
       let content=res.data.result.content
       let {cateList}=this.data
@@ -629,7 +630,8 @@ Page({
     data.complete=!data.complete
     data.userid=wx.getStorageSync('userID');
     // 同时需要更新视图层
-    let {cateList}=this.data
+    if(data.id){
+      let {cateList}=this.data
     cateList.forEach(v=>{
       if(v.name===data.parentType){
         v.children[data.count-1]=data
@@ -644,8 +646,10 @@ Page({
       method:'post',
       data
     })
+    }
+    
     // console.log(res);
-    this.viewBlPrint3()
+    // this.viewBlPrint3()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -663,6 +667,7 @@ Page({
       method: 'post',
       url: '/anonymous/queryBlueprint'
     })
+    // console.log(res);
     if (res.statusCode === 200 && res.data.message === '查询成功') {
       let userBluePrint = res.data.result.content
       // console.log(res);
@@ -696,13 +701,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 初始化数据
-    this.setData({
-      changeIndex: 1,
-      completionTime: 3
-    })
-    // 页面数据刷新
-    this.onLoad()
   },
 
   /**
