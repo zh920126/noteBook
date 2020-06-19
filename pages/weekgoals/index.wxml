@@ -1,6 +1,6 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
-  <view class="tab">主页</view>
+  <view class="tab" bind:tap="handleToIndex">主页</view>
   <view class="tab" bind:tap="handleLastWeek">上周</view>
   <view class="tab" bind:tap="handleNextWeek">下周</view>
   <view class="tab">
@@ -63,7 +63,7 @@
         <view class="center">
           <textarea class="mytext" value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdatePlan"></textarea>
         </view>
-        <view class="right {{item2.complete===true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
+        <view class="right {{item.complete===true?'iconfont icon-zhengque':''}}" data-info="{{item}}" bind:tap="handleComplete"></view>
       </view>
     </block>
   </view>
@@ -80,14 +80,14 @@
           请注意规划你的生活，平衡你的人生，以下目标做到打'√',本周有特别的日子吗？请标注(生日/节日/纪念日)
         </view>
       </view>
-      <block wx:for="{{3}}" wx:key="*this">
+      <block wx:for="{{otherPlan}}" wx:key="type">
       <view class="footer-right-content">
-         <view class="content-left">学习计划</view>
+         <view class="content-left">{{item.type}}</view>
          <view class="content-center">
-           <textarea class="mytext"></textarea>
+           <textarea class="mytext" value="{{item.content}}" data-info="{{item}}" bindblur="handleOtherPlan"></textarea>
          </view>
         <view class="content-right">
-          <textarea class="mytext"></textarea>
+          <view class="{{item.complete===true?'iconfont icon-zhengque':''}}" data-info="{{item}}" bind:tap="handleOtherComplete"></view>
         </view>
       </view>
       </block>
@@ -96,6 +96,6 @@
   <!-- 底部跳转链接 -->
   <view class="footer-url">
     <text/>
-    <navigator class="url" url="/pages/daygoals/index">下一页
+    <navigator class="url" url="/pages/daygoals/index?year={{year}}&week={{week}}">下一页
     </navigator>
   </view>
