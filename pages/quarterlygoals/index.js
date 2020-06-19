@@ -330,7 +330,6 @@ Page({
     let data = {
       content: value,
       quarter: this.data.changeIndex,
-      timeSign: this.getTime(),
       type: info.type,
       userid: wx.getStorageSync('userID'),
       year: new Date().getFullYear()
@@ -491,7 +490,6 @@ Page({
       url: '/anonymous/querySummarize',
       data: {
         quarter: this.data.changeIndex,
-        timeSign: this.getTime(),
         userid: wx.getStorageSync('userID'),
         year: new Date().getFullYear()
       }

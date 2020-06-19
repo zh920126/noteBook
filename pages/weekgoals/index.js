@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    weekPerformance: [{
+    weekPerformance: [
+      {
         content: '',
         type: '目标完成情况',
       },
@@ -40,8 +41,7 @@ Page({
         type: '未完成目标的原因及障碍'
       }
     ],
-    service:[
-      {
+    service: [{
         content: '',
         type: '克服障碍的对策和方法'
       },
@@ -54,8 +54,7 @@ Page({
         type: '克服障碍的对策和方法'
       },
     ],
-    harvest:[
-      {
+    harvest: [{
         content: '',
         type: '本周创新与收获'
       },
@@ -68,121 +67,172 @@ Page({
         type: '本周创新与收获'
       },
     ],
-    weeklyPlan:[
-      {
-        index:1,
-        content:'',
-        type:'本周目标'
+    weeklyPlan: [{
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:2,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:3,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:4,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:5,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:6,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:7,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:8,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:9,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:10,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:11,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:12,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:13,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:14,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:15,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:16,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       },
       {
-        index:17,
-        content:'',
-        type:'本周目标'
+        content: '',
+        type: '本周目标',
+        complete:false
       }
-    ]
+    ],
+    week: '',
+    year: new Date().getFullYear()
   },
-  // 更新完成状态
-  async handleComplete(e){
+  // 上一周
+  handleLastWeek(){
+    let {week,year}=this.data
+    if(week-1===0){
+      week=53
+      year--
+    }
+    this.setData({
+      week:week-1,year
+    })
+    this.getUserMsg()
+    this.getWeekPlan()
+  },
+  // 下一周
+  handleNextWeek(){
+    let {week,year}=this.data
+    if(week+1===53){
+      week=0
+      year++
+    }
+    this.setData({
+      week:week+1,year
+    })
+    this.getUserMsg()
+    this.getWeekPlan()
+  },
+  // 完成打钩
+  handleComplete(e){
 
+  },
+  // 更新本周目标
+  async handleUpdatePlan(e){
+    let {info}=e.currentTarget.dataset
+    let {value}=e.detail
+    let data={
+      complete:info.complete,
+      content:value,
+      timeSign: +(''+this.data.year+this.data.week),
+      type:info.type,
+      userid:wx.getStorageSync('userID')
+    }
+    if(info.id){
+      data.id=info.id
+    }
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/updateWeekPlan',
+      data
+    })
+    if(res.statusCode===200){
+      this.getWeekPlan()
+    }
   },
   // 创新与收获
   async handleHarvest(e) {
-    let {value
+    let {
+      value
     } = e.detail
     let {
       info,
       index
     } = e.currentTarget.dataset
     // 判断是新增还是更新
-    let data ={}
-    if(info.id){
+    let data = {}
+    if (info.id) {
       data = {
         id: info.id,
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
       }
-    }else{
+    } else {
       data = {
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
@@ -196,32 +246,35 @@ Page({
     })
     // 请求完成之后，重新获取数据并渲染页面
     if (res.data.statusCode === 200) {
-      this.onLoad()
+      this.getUserMsg()
+      this.getWeekPlan()
     }
   },
-  // 客服障碍的更新
+  // 克服障碍的更新
   async handleService(e) {
-    let {value
+    console.log(123);
+    let {
+      value
     } = e.detail
     let {
       info,
       index
     } = e.currentTarget.dataset
     // 判断是新增还是更新
-    let data ={}
-    if(info.id){
+    let data = {}
+    if (info.id) {
       data = {
         id: info.id,
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
       }
-    }else{
+    } else {
       data = {
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
@@ -235,32 +288,34 @@ Page({
     })
     // 请求完成之后，重新获取数据并渲染页面
     if (res.data.statusCode === 200) {
-      this.onLoad()
+      this.getUserMsg()
+    this.getWeekPlan()
     }
   },
   // 未完成目标的原因
   async handleReason(e) {
-    let {value
+    let {
+      value
     } = e.detail
     let {
       info,
       index
     } = e.currentTarget.dataset
     // 判断是新增还是更新
-    let data ={}
-    if(info.id){
+    let data = {}
+    if (info.id) {
       data = {
         id: info.id,
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
       }
-    }else{
+    } else {
       data = {
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
@@ -274,38 +329,38 @@ Page({
     })
     // 请求完成之后，重新获取数据并渲染页面
     if (res.data.statusCode === 200) {
-      this.onLoad()
+      this.getUserMsg()
+    this.getWeekPlan()
     }
   },
   // 目标完成情况更新
   async handleWeekPerformance(e) {
-    let {value
+    let {
+      value
     } = e.detail
     let {
-      info,
-      index
+      info
     } = e.currentTarget.dataset
     // 判断是新增还是更新
-    let data ={}
-    if(info.id){
+    let data = {}
+    if (info.id) {
       data = {
         id: info.id,
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
       }
-    }else{
+    } else {
       data = {
         content: value,
-        timeSign: this.getTime(),
+        timeSign: +(''+this.data.year+this.data.week),
         type: info.type,
         year: new Date().getFullYear(),
         userid: wx.getStorageSync('userID')
       }
     }
-    // console.log(data);
     let res = await app.myAxios({
       method: 'post',
       url: '/anonymous/updateSummarize',
@@ -313,7 +368,8 @@ Page({
     })
     // 请求完成之后，重新获取数据并渲染页面
     if (res.data.statusCode === 200) {
-      this.onLoad()
+      this.getUserMsg()
+    this.getWeekPlan()
     }
   },
   // 时间转换
@@ -326,14 +382,130 @@ Page({
     days = days < 10 ? '0' + days : days
     return year + '-' + month + '-' + days
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  async onLoad() {
+  // 时间转化为周数
+  getWeek() {
+    let date = new Date();
+    let beginDate = new Date(date.getFullYear(), 0, 1);
+    let week=Math.ceil((parseInt((date - beginDate) / (24 * 60 * 60 * 1000)) + 1 + beginDate.getDay()) / 7);
+    this.setData({
+      week
+    })
+  },
+  // 获取周计划数据
+  async getWeekPlan(){
+    let data={
+      timeSign:+(''+this.data.year+this.data.week),
+      userid:wx.getStorageSync('userID')
+    }
+    let res=await app.myAxios({
+      method:'post',
+      url:'/anonymous/queryWeekPlan',
+      data
+    })
+    if(res.statusCode===200){
+      let {weeklyPlan}=this.data
+      weeklyPlan= [{
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      },
+      {
+        content: '',
+        type: '本周目标',
+        complete:false
+      }
+    ]
+      let {result}=res.data
+      result.forEach((v,i) => {
+        if(v.type==='本周目标'){
+          weeklyPlan[i]=v
+          weeklyPlan.length=17
+        }
+      });
+      this.setData({weeklyPlan})
+    }
+  },
+  // 获取总结数据
+  async getUserMsg() {
     // 获取总结数据
     let data = {
       userid: wx.getStorageSync('userID'),
-      timeSign: this.getTime(),
+      timeSign: +(''+this.data.year+this.data.week),
       year: new Date().getFullYear()
     }
     let res = await app.myAxios({
@@ -344,37 +516,100 @@ Page({
     if (res.data.result) {
       let arr = res.data.result
       let {
-        weekPerformance,reason,service,harvest
+        weekPerformance,
+        reason,
+        service,
+        harvest
       } = this.data
+      weekPerformance = [{
+            content: '',
+            type: '目标完成情况',
+          },
+          {
+            content: '',
+            type: '目标完成情况',
+          },
+          {
+            content: '',
+            type: '目标完成情况',
+          },
+          {
+            content: '',
+            type: '目标完成情况',
+          },
+          {
+            content: '',
+            type: '目标完成情况',
+          }
+        ],
+        reason = [{
+            content: '',
+            type: '未完成目标的原因及障碍'
+          },
+          {
+            content: '',
+            type: '未完成目标的原因及障碍'
+          },
+          {
+            content: '',
+            type: '未完成目标的原因及障碍'
+          }
+        ],
+        service = [{
+            content: '',
+            type: '克服障碍的对策和方法'
+          },
+          {
+            content: '',
+            type: '克服障碍的对策和方法'
+          },
+          {
+            content: '',
+            type: '克服障碍的对策和方法'
+          },
+        ],
+        harvest = [{
+            content: '',
+            type: '本周创新与收获'
+          },
+          {
+            content: '',
+            type: '本周创新与收获'
+          },
+          {
+            content: '',
+            type: '本周创新与收获'
+          },
+        ]
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].type === '目标完成情况') {
           weekPerformance.unshift(arr[i])
           if (weekPerformance.length > 5) {
-            weekPerformance.splice(5,weekPerformance.length - 5)
+            weekPerformance.splice(5, weekPerformance.length - 5)
           } else {
             weekPerformance.length = 5
           }
         }
-        if(arr[i].type==='未完成目标的原因及障碍'){
+        if (arr[i].type === '未完成目标的原因及障碍') {
           reason.unshift(arr[i])
           if (reason.length > 3) {
-            reason.splice(3,reason.length - 3)
+            reason.splice(3, reason.length - 3)
           } else {
             reason.length = 3
           }
         }
-        if(arr[i].type==='客服障碍的对策和方法'){
+        if (arr[i].type === '克服障碍的对策和方法') {
           service.unshift(arr[i])
           if (service.length > 3) {
-            service.splice(3,service.length - 3)
+            service.splice(3, service.length - 3)
           } else {
             service.length = 3
           }
         }
-        if(arr[i].type==='本周创新与收获'){
+        if (arr[i].type === '本周创新与收获') {
           harvest.unshift(arr[i])
           if (harvest.length > 3) {
-            harvest.splice(3,harvest.length - 3)
+            harvest.splice(3, harvest.length - 3)
           } else {
             harvest.length = 3
           }
@@ -387,8 +622,18 @@ Page({
         harvest
       })
     }
-    // 获取周计划数据
-    
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  async onLoad() {
+    this.getWeek()
+    // let res = this.getWeek()
+    // this.setData({
+    //   week:res
+    // })
+    this.getUserMsg()
+    this.getWeekPlan()
   },
 
   /**

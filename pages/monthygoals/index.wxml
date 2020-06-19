@@ -50,7 +50,7 @@
     本月份的目标总结(请在每月末回到本业对应上表总结分析)
   </view>
   <view class="unfinished-part">
-    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
+    <!-- <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea> -->
   </view>
   <block wx:for="{{reasonArr}}" wx:key="*this">
   <view class="reason">

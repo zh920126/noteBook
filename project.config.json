@@ -20,7 +20,8 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.2",
@@ -58,8 +59,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/monthygoals/index",
-					"pathName": "pages/monthygoals/index",
+					"name": "pages/weekgoals/index",
+					"pathName": "pages/weekgoals/index",
 					"query": "",
 					"scene": null
 				},

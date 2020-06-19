@@ -49,7 +49,7 @@ Page({
   },
   onLoad: function () {
     // 将用户的userID存起来
-    wx.setStorageSync('userID', '123');
+    wx.setStorageSync('userID', '2');
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

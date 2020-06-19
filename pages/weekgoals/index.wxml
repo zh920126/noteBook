@@ -1,12 +1,12 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
   <view class="tab">主页</view>
-  <view class="tab">上周</view>
-  <view class="tab">下周</view>
+  <view class="tab" bind:tap="handleLastWeek">上周</view>
+  <view class="tab" bind:tap="handleNextWeek">下周</view>
   <view class="tab">
-    第
-    <input type="number" />
-    周
+    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+      <view class="picker">{{year}} 年第 {{week}} 周</view>
+    </picker>
   </view>
 </view>
 <!-- 表格数据部分 -->
@@ -17,7 +17,7 @@
     <view class="week-left-item">目标完成情况</view>
     <block wx:for="{{weekPerformance}}" wx:key="*this">
       <view class="week-left-item">
-      <textarea class="mytext" value="{{item.content}}" bindblur="handleWeekPerformance" data-info="{{item}}" data-index="{{index}}"></textarea>
+      <textarea class="mytext" value="{{item.content}}" bindblur="handleWeekPerformance" data-info="{{item}}"></textarea>
     </view>
     </block>
     <view class="week-left-item">未完成目标的原因及障碍</view>
@@ -59,9 +59,9 @@
     </view>
     <block wx:for="{{weeklyPlan}}" wx:key="index">
       <view class="week-right-content">
-        <view class="left">{{item.index}}</view>
+        <view class="left">{{index+1}}</view>
         <view class="center">
-          <textarea class="mytext"></textarea>
+          <textarea class="mytext" value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdatePlan"></textarea>
         </view>
         <view class="right {{item2.complete===true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
       </view>
@@ -77,7 +77,7 @@
       <view class="footer-right-title">
         <view class="title-left">本周其他目标</view>
         <view class="title-right">
-          请注意规划你的生活，平衡你的人生，一下目标做到打'√',本周有特别的日子吗？请标注(生日/节日/纪念日)
+          请注意规划你的生活，平衡你的人生，以下目标做到打'√',本周有特别的日子吗？请标注(生日/节日/纪念日)
         </view>
       </view>
       <block wx:for="{{3}}" wx:key="*this">
