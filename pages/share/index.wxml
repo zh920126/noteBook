@@ -1,14 +1,28 @@
 <view class="share">
   <view class="share-title">本周最想分享的三点:</view>
-  <block wx:for="{{3}}" wx:key="*this">
   <view class="share-content">
-    <view class="share-content-left">{{index+1}}</view>
+    <view class="share-content-left">1</view>
     <view class="share-content-right">
-      <view><textarea></textarea></view>
-      <view><textarea></textarea></view>
-      <view><textarea></textarea></view>
+      <block wx:for="{{shareArray1}}" wx:key="*this">
+      <view><textarea value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdateSummary"></textarea></view>
+      </block>
     </view>
   </view>
-  </block>
+  <view class="share-content">
+    <view class="share-content-left">2</view>
+    <view class="share-content-right">
+      <block wx:for="{{shareArray2}}" wx:key="*this">
+      <view><textarea value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdateSummary"></textarea></view>
+      </block>
+    </view>
+  </view>
+  <view class="share-content">
+    <view class="share-content-left">3</view>
+    <view class="share-content-right">
+      <block wx:for="{{shareArray3}}" wx:key="*this">
+      <view><textarea value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdateSummary"></textarea></view>
+      </block>
+    </view>
+  </view>
 </view>
-<text class="back">上一页</text>
+<text class="back" bind:tap="handleBack">上一页</text>

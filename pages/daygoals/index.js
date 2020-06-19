@@ -280,8 +280,9 @@ Page({
     let {day,whichDay}=this.data
     whichDay++
     if(whichDay>7){
+      let {year,week}=this.data
       wx.navigateTo({
-        url: '/pages/share/index',
+        url: `/pages/share/index?year=${year}&week=${week}`,
       });
       return
     }

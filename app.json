@@ -6,8 +6,7 @@
     "pages/monthygoals/index",
     "pages/weekgoals/index",
     "pages/daygoals/index",
-    "pages/share/index",
-    "pages/test/index"
+    "pages/share/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
