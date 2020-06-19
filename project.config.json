@@ -21,7 +21,8 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.2",
@@ -59,9 +60,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/weekgoals/index",
-					"pathName": "pages/weekgoals/index",
-					"query": "",
+					"name": "pages/daygoals/index",
+					"pathName": "pages/daygoals/index",
+					"query": "year=2020&week=25",
 					"scene": null
 				},
 				{

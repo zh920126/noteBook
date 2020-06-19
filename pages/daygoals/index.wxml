@@ -2,9 +2,9 @@
 <view class="daily">
   <view class="daily-left">
     <view class="daily-left-content">
-      <block wx:for="{{titleArr}}" wx:key="id">
-        <view class="daily-left-title">{{item.name}}</view>
-      </block>
+        <view class="daily-left-title">{{day}}</view>
+        <view class="daily-left-title">计划</view>
+        <view class="daily-left-title">年月日</view>
     </view>
     <view class="category">
       <view class="cateName">按ABC分类</view>
@@ -16,16 +16,21 @@
       <view class="cateName">完成打'√'</view>
     </view>
     <!-- 内容部分 -->
-    <block wx:for="{{17}}">
+    <block wx:for="{{todayThings}}" wx:key="index">
     <view class="description">
-      <view class="content"><input type="text"/></view>
+      <view class="content"><input type="text" value="{{item.type}}" bindblur="handleChangeType" data-info="{{item}}"/></view>
       <view class="content">
-        <input type="text"/>
+       <picker mode="date" value="{{item.time}}" bind:change="bindDateChange" data-info="{{item}}">
+        <view class="picker">
+          <text style="opacity:0">选择时间</text>
+          <text>{{item.time==null?'':item.time}}</text>
+        </view>
+      </picker>
       </view>
       <view class="content">
-        <textarea class="todayThings"></textarea>
+        <textarea class="todayThings" value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdateContent"></textarea>
       </view>
-      <view class="content">√</view>
+      <view class="content {{item.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item}}" bind:tap="handleComplete"></view>
     </view>
     </block>
   </view>
@@ -35,15 +40,15 @@
       <text >总结</text>
       <text >改进</text>
     </view>
-    <block wx:for="{{18}}">
+    <block wx:for="{{todaySummary}}">
       <view class="des">
-        <textarea></textarea>
+        <textarea value="{{item.content}}" data-info="{{item}}" bindblur="handleUpdateSummary"></textarea>
       </view>
     </block>
   </view>
 </view>
 <!-- 底部导航 -->
 <view class="footer">
-  <view class="footer-left">上一页</view>
-  <view class="footer-right">下一页</view>
+  <view class="footer-left" bind:tap="handleLastDay">上一页</view>
+  <view class="footer-right" bind:tap="handleNextDay">下一页</view>
 </view>

@@ -10,6 +10,7 @@
       color: #fff;
       background: #009999;
       display: flex;
+      
       view{
         display: flex;
         justify-content: space-around;
@@ -76,6 +77,22 @@
         }
         &:nth-child(2){
           width: 75rpx;
+          picker{
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text{
+              &:last-child{
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+          justify-content: center;
+          align-items: center;
+              }
+            }
+          }
           input{
             width: 100%;
             height: 100%;
