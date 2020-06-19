@@ -729,38 +729,30 @@ Page({
             type: '本周创新与收获'
           },
         ]
+        let j=0;
+        let k=0;
+        let l=0;
+        let g=0;
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].type === '目标完成情况') {
-          weekPerformance.unshift(arr[i])
-          if (weekPerformance.length > 5) {
-            weekPerformance.splice(5, weekPerformance.length - 5)
-          } else {
+          weekPerformance[j]=arr[i]
             weekPerformance.length = 5
-          }
+            j++
         }
         if (arr[i].type === '未完成目标的原因及障碍') {
-          reason.unshift(arr[i])
-          if (reason.length > 3) {
-            reason.splice(3, reason.length - 3)
-          } else {
-            reason.length = 3
-          }
+          reason[k]=arr[i]
+          reason.length = 3
+          k++
         }
         if (arr[i].type === '克服障碍的对策和方法') {
-          service.unshift(arr[i])
-          if (service.length > 3) {
-            service.splice(3, service.length - 3)
-          } else {
+          service[l]=arr[i]
             service.length = 3
-          }
+            l++
         }
         if (arr[i].type === '本周创新与收获') {
-          harvest.unshift(arr[i])
-          if (harvest.length > 3) {
-            harvest.splice(3, harvest.length - 3)
-          } else {
+          harvest[g]=arr[i]
             harvest.length = 3
-          }
+            g++
         }
       }
       this.setData({

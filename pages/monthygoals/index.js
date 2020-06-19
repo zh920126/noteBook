@@ -261,9 +261,8 @@ Page({
       value
     } = e.detail
     let {
-      info
+      info,index
     } = e.currentTarget.dataset
-    console.log(info);
     let data = {
       complete: !info.complete,
       content: info.content,
@@ -276,17 +275,28 @@ Page({
     }
     if (info.id) {
       data.id = info.id
+      // 有ID才能打钩，先对页面进行更新，避免发请求过慢导致卡顿
+      let {table}=this.data
+      console.log(data);
+      table.forEach((v,i)=>{
+        if(v.name===data.type){
+          v.children.forEach(value=>{
+            if(value.id===data.id){
+              console.log(value);
+              value.complete=!value.complete
+            }
+          })
+        }
+      })
+      this.setData({table})
+      let res = await app.myAxios({
+        method: 'post',
+        url: '/anonymous/updateOrInsertAirms',
+        data
+      })
     }
-    // console.log(data);
-    let res = await app.myAxios({
-      method: 'post',
-      url: '/anonymous/updateOrInsertAirms',
-      data
-    })
-    if (res.statusCode === 200) {
-      // 跟新页面数据
-      this.geyUserMsg()
-    }
+    
+    
   },
   // 更新月份总结
   async handleQuarterlySummary(e) {
@@ -533,7 +543,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad(options) {},
+  async onLoad(options) {
+    this.geyUserMsg()
+    this.getUserSummary()
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -546,8 +559,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.geyUserMsg()
-    this.getUserSummary()
+    
   },
 
   /**

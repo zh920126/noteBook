@@ -263,7 +263,6 @@ Page({
     let {
       info
     } = e.currentTarget.dataset
-    console.log(info);
     let data = {
       complete: !info.complete,
       content: info.content,
@@ -276,16 +275,24 @@ Page({
     }
     if (info.id) {
       data.id = info.id
-    }
-    // console.log(data);
-    let res = await app.myAxios({
-      method: 'post',
-      url: '/anonymous/updateOrInsertAirms',
-      data
-    })
-    if (res.statusCode === 200) {
-      // 跟新页面数据
-      this.geyUserMsg()
+      let {table}=this.data
+      console.log(data);
+      table.forEach((v,i)=>{
+        if(v.name===data.type){
+          v.children.forEach(value=>{
+            if(value.id===data.id){
+              console.log(value);
+              value.complete=!value.complete
+            }
+          })
+        }
+      })
+      this.setData({table})
+      let res = await app.myAxios({
+        method: 'post',
+        url: '/anonymous/updateOrInsertAirms',
+        data
+      })
     }
   },
   // 更新季度总结
@@ -467,7 +474,6 @@ Page({
         table[1].children[i]=v
         table[1].children.length = 3
       });
-      console.log(table[1].children);
       this.setData({
         table
       })

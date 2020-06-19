@@ -25,7 +25,7 @@
   <view class="tr">
     <view class="td1">{{item.name}}</view>
     <view class="td2">
-      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2">
+      <block wx:for="{{item.children}}" wx:key="*this" wx:for-item="item2" wx:for-index="index2">
         <view class="aa">
           <view class="td3">
             <view class="td3-son">
@@ -38,7 +38,7 @@
             <view class="td3-son">
               <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
             </view>
-            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" data-index="{{index2}}" bind:tap="handleComplete"></view>
           </view>
         </view>
       </block>
@@ -50,7 +50,7 @@
     本月份的目标总结(请在每月末回到本业对应上表总结分析)
   </view>
   <view class="unfinished-part">
-    <!-- <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea> -->
+    <textarea value="{{quarterlySummary.content}}" bindblur="handleQuarterlySummary" data-info="{{quarterlySummary}}"></textarea>
   </view>
   <block wx:for="{{reasonArr}}" wx:key="*this">
   <view class="reason">

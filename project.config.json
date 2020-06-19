@@ -60,9 +60,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/share/index",
-					"pathName": "pages/share/index",
-					"query": "year=2020&week=25",
+					"name": "pages/quarterlygoals/index",
+					"pathName": "pages/quarterlygoals/index",
+					"query": "",
 					"scene": null
 				},
 				{
