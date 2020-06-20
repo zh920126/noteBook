@@ -247,6 +247,7 @@ Page({
   },
   // 修改完成状态
   async handleComplete(e) {
+    console.log('我点击了完成状态');
     let {
       value
     } = e.detail
@@ -264,19 +265,47 @@ Page({
       userId: wx.getStorageSync('userID'),
       year: info.year
     }
+
+
+    let {table}=this.data
+    console.log(data);
+    table.forEach((v,i)=>{
+      if(v.name===data.type){
+        v.children.forEach(value=>{
+          if(value.id===data.id){
+            console.log(value);
+            value.complete=!value.complete
+          }
+        })
+      }
+    })
+    this.setData({table})
+
+
+
     if (info.id) {
       data.id = info.id
+      // 有ID才能打钩，先对页面进行更新，避免发请求过慢导致卡顿
+      let {table}=this.data
+      console.log(data);
+      table.forEach((v,i)=>{
+        if(v.name===data.type){
+          v.children.forEach(value=>{
+            if(value.id===data.id){
+              console.log(value);
+              value.complete=!value.complete
+            }
+          })
+        }
+      })
+      this.setData({table})
+      let res = await app.myAxios({
+        method: 'post',
+        url: '/anonymous/updateOrInsertAirms',
+        data
+      })
     }
-    // console.log(data);
-    let res = await app.myAxios({
-      method: 'post',
-      url: '/anonymous/updateOrInsertAirms',
-      data
-    })
-    if (res.statusCode === 200) {
-      // 跟新页面数据
-      this.geyUserMsg()
-    }
+    
   },
   // 更新季度总结
   async handleQuarterlySummary(e) {

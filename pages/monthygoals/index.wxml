@@ -37,7 +37,7 @@
             <view class="td3-son">
               <textarea value="{{item2.aimMeasures}}" class="" data-info="{{item2}}" bindblur="handleMeasures"></textarea>
             </view>
-            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" data-index="{{index2}}" bind:tap="handleComplete"></view>
+            <view class="td3-son {{item2.complete==true?'iconfont icon-zhengque':''}}" data-info="{{item2}}" bind:tap="handleComplete"></view>
           </view>
         </view>
       </block>

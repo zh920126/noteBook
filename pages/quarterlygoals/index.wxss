@@ -111,6 +111,10 @@ page {
 }
 .table .tr .td2 .td3-son:last-child {
   width: 36rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
 }
 .table .tr .td2 .td3-son > input {
   height: 100%;
