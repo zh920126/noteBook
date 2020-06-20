@@ -1,6 +1,5 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
-  <view class="tab" bind:tap="handleToIndex">主页</view>
   <view class="tab" bind:tap="handleLastMonth">上月</view>
   <view class="tab" bind:tap="handleNextMonth">下月</view>
   <view class="tab">

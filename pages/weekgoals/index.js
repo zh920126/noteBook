@@ -172,12 +172,6 @@ Page({
     week: '',
     year: new Date().getFullYear()
   },
-  // 去首页
-  handleToIndex(){
-    wx.navigateTo({
-      url: '/pages/index/index',
-    });
-  },
   // 上一周
   handleLastWeek() {
     let {

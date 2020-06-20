@@ -1,6 +1,5 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
-  <view class="tab" bind:tap="handleToIndex">主页</view>
   <view class="tab" bind:tap="handleLastWeek">上周</view>
   <view class="tab" bind:tap="handleNextWeek">下周</view>
   <view class="tab">

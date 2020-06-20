@@ -7,24 +7,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [{
-        id: 1,
-        name: '主页'
-      },
+    tabs: [
       {
-        id: 2,
+        id: 1,
         name: '第一季度'
       },
       {
-        id: 1,
+        id: 2,
         name: '第二季度'
       },
       {
-        id: 1,
+        id: 3,
         name: '第三季度'
       },
       {
-        id: 1,
+        id: 4,
         name: '第四季度'
       }
     ],
@@ -143,18 +140,11 @@ Page({
     let {
       index
     } = e.currentTarget.dataset
-    if (index === 0) {
-      // 点击主页就进行跳转
-      wx.navigateTo({
-        url: '/pages/index/index',
-      });
-    } else {
       this.setData({
         changeIndex: index
       })
       this.geyUserMsg()
       this.getUserSummary()
-    }
   },
   // 重要级别修改
   async handleLevel(e) {
@@ -263,6 +253,7 @@ Page({
     let {
       info
     } = e.currentTarget.dataset
+    console.log(info);
     let data = {
       complete: !info.complete,
       content: info.content,
@@ -275,24 +266,16 @@ Page({
     }
     if (info.id) {
       data.id = info.id
-      let {table}=this.data
-      console.log(data);
-      table.forEach((v,i)=>{
-        if(v.name===data.type){
-          v.children.forEach(value=>{
-            if(value.id===data.id){
-              console.log(value);
-              value.complete=!value.complete
-            }
-          })
-        }
-      })
-      this.setData({table})
-      let res = await app.myAxios({
-        method: 'post',
-        url: '/anonymous/updateOrInsertAirms',
-        data
-      })
+    }
+    // console.log(data);
+    let res = await app.myAxios({
+      method: 'post',
+      url: '/anonymous/updateOrInsertAirms',
+      data
+    })
+    if (res.statusCode === 200) {
+      // 跟新页面数据
+      this.geyUserMsg()
     }
   },
   // 更新季度总结
@@ -315,7 +298,7 @@ Page({
     if (info.id) {
       data.id = info.id
     }
-    // console.log(data);
+    console.log(data);
     let res = await app.myAxios({
       method: 'post',
       url: '/anonymous/updateSummarize',
@@ -323,7 +306,7 @@ Page({
     })
     // console.log(res);
     if (res.statusCode === 200) {
-      this.getUserSummary
+      this.getUserSummary()
     }
   },
   // 更新原因
@@ -337,6 +320,7 @@ Page({
     let data = {
       content: value,
       quarter: this.data.changeIndex,
+      timeSign: this.getTime(),
       type: info.type,
       userid: wx.getStorageSync('userID'),
       year: new Date().getFullYear()
@@ -350,7 +334,7 @@ Page({
       data
     })
     if (res.statusCode === 200) {
-      this.getUserSummary
+      this.getUserSummary()
     }
   },
   // 获取用户季度数据
@@ -474,6 +458,7 @@ Page({
         table[1].children[i]=v
         table[1].children.length = 3
       });
+      console.log(table[1].children);
       this.setData({
         table
       })
@@ -491,16 +476,22 @@ Page({
   },
   // 获取用户季度总结
   async getUserSummary() {
+    console.log({
+      quarter: this.data.changeIndex,
+      timeSign: this.getTime(),
+      userid: wx.getStorageSync('userID'),
+      year: new Date().getFullYear()
+    });
     let res = await app.myAxios({
       method: 'post',
       url: '/anonymous/querySummarize',
       data: {
         quarter: this.data.changeIndex,
+        timeSign: this.getTime(),
         userid: wx.getStorageSync('userID'),
         year: new Date().getFullYear()
       }
     })
-    // console.log(res);
     if (res.statusCode === 200) {
       let {
         result

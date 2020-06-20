@@ -110,12 +110,6 @@ Page({
     month:new Date().getMonth()+1,
     year:new Date().getFullYear()
   },
-  // 返回主页
-  handleToIndex(){
-    wx.navigateTo({
-      url: '/pages/index/index',
-    });
-  },
   // 日期选择器来获取日期
   bindDateChange(e){
     console.log(e.detail.value);
