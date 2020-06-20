@@ -7,9 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabs: [{
-        name: '主页'
-      },
+    tabs: [
       {
         name: '人生蓝图一'
       },
@@ -146,6 +144,15 @@ Page({
             startTime:'',
             complete:false
           },
+          {
+            parentType: '事业(工作)目标',
+            count:8,
+            type:'',
+            content:'',
+            measures:'',
+            startTime:'',
+            complete:false
+          }
         ]
       },
       {
@@ -354,7 +361,7 @@ Page({
         ]
       },
     ],
-    changeIndex: 1,
+    changeIndex: 0,
     completionTime: 3
   },
   // 点击顶部tab切换
@@ -363,18 +370,12 @@ Page({
       index
     } = e.currentTarget.dataset
     // console.log(index);
-    
     if (index === 0) {
-      // 点击主页时，返回到主页页面
-      wx.navigateTo({
-        url: '/pages/index/index',
-      });
-    } else if (index === 1) {
       this.setData({
         changeIndex: index
       })
       this.onLoad()
-    } else if (index === 2) {
+    } else if (index === 1) {
       this.setData({
         changeIndex: index
       })
