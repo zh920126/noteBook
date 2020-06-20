@@ -476,12 +476,6 @@ Page({
   },
   // 获取用户季度总结
   async getUserSummary() {
-    console.log({
-      quarter: this.data.changeIndex,
-      timeSign: this.getTime(),
-      userid: wx.getStorageSync('userID'),
-      year: new Date().getFullYear()
-    });
     let res = await app.myAxios({
       method: 'post',
       url: '/anonymous/querySummarize',
@@ -537,7 +531,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad(options) {},
+  async onLoad(options) {
+    this.setData({
+      changeIndex: 1
+    })
+    this.geyUserMsg()
+    this.getUserSummary()
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -550,11 +550,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      changeIndex: 1
-    })
-    this.geyUserMsg()
-    this.getUserSummary()
+    
   },
 
   /**

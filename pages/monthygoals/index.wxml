@@ -1,23 +1,23 @@
 <!-- 顶部tab栏 -->
+<view class="head">
 <view class="tabbar">
   <view class="tab" bind:tap="handleLastMonth">上月</view>
-  <view class="tab" bind:tap="handleNextMonth">下月</view>
   <view class="tab">
     <picker mode="date" value="{{date}}" bindchange="bindDateChange">
-      <view class="picker">第 {{month}} 月</view>
+      <view class="picker">{{year}}年第 {{month}} 月</view>
     </picker>
   </view>
+  <view class="tab" bind:tap="handleNextMonth">下月</view>
+</view>
 </view>
 <!-- 表格部分 -->
-<block>
 <view class="table">
-  <view class="table-title">{{year}}年{{month}}月目标</view>
   <view class="th">
     <view class="td">类别</view>
     <view class="td">重要级别</view>
     <view class="td">目标内容</view>
     <view class="td">方法和措施</view>
-    <view class="td">完成的打'√'</view>
+    <view class="td">完成打勾</view>
   </view>
   <!-- 表格内容部分 -->
   <block wx:for="{{table}}" wx:key="id">
@@ -44,7 +44,9 @@
     </view>
   </view>
   </block>
-  <!-- 月度总结部分 -->
+</view>
+ <!-- 月度总结部分 -->
+ <view class="box">
   <view class="quarter">
     本月份的目标总结(请在每月末回到本业对应上表总结分析)
   </view>
@@ -57,5 +59,4 @@
     <textarea value="{{item.content}}" bindblur="handleReason" data-info="{{item}}"></textarea>
   </view>
   </block>
-</view>
-</block>
+  </view>

@@ -24,16 +24,23 @@
   </view> -->
   <!-- 顶部背景 -->
   <view class="bg">
+    <block wx:if="{{userInfo.nickName}}">
     <view class="userAvatar">
     <image class="" mode="widthFix" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3104749104,4207433598&fm=26&gp=0.jpg"></image>
     </view>
+    </block>
+    <block wx:else>
+    <view class="userAvatar">
+    <button open-type="getUserInfo" bind:tap="handleGetUserInfo">我的照片</button>
+    </view>
+    </block>
   </view>
     <!-- 个人信息部分 -->
     <view class="userInfo">
       <view class="user-name">
         <view class="user-name-title">
           <view>姓名</view>
-          <view class="name">樊文花</view>
+          <view class="name">{{userInfo.nickName}}</view>
         </view>
         <view class="user-name-phone">
           <view>手机</view>

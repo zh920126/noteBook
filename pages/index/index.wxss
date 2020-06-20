@@ -67,6 +67,15 @@
   border-radius: 7rpx;
   overflow: hidden;
   transform: translate(-50%);
+  writing-mode: vertical-lr;
+}
+.index .card .bg .userAvatar button {
+  width: 100%;
+  height: 100%;
+  color: #5FAE89;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .index .card .bg image {
   position: absolute;
