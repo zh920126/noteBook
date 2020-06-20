@@ -66,9 +66,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/blueprint/index",
-					"pathName": "pages/blueprint/index",
+					"id": 1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"query": "changeIndex=3",
 					"scene": null
 				}

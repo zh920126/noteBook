@@ -10,9 +10,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#219d9c",
-    "navigationBarTitleText": "成长日记",
-    "navigationBarTextStyle":"white"
+    "navigationBarBackgroundColor": "#D9E0DF",
+    "navigationBarTitleText": "樊文花成长手册",
+    "navigationBarTextStyle":"black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
