@@ -362,7 +362,7 @@ Page({
       }
     })
     // console.log(res);
-    if (res.statusCode === 200) {
+    if (res.statusCode === 200&&res.data.workIndex&&res.data.otherTarget) {
       let {
         workIndex,
         otherTarget

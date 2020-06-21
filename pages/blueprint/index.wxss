@@ -96,7 +96,6 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30rpx;
 }
 .table .content {
   display: flex;

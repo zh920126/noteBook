@@ -154,7 +154,6 @@ Page({
     let {
       info
     } = e.currentTarget.dataset
-    console.log(info);
     let data = {
       complete: info.complete,
       content: info.content,
@@ -187,7 +186,6 @@ Page({
     let {
       info
     } = e.currentTarget.dataset
-    console.log(info);
     let data = {
       complete: info.complete,
       content: value,
@@ -265,24 +263,6 @@ Page({
       userId: wx.getStorageSync('userID'),
       year: info.year
     }
-
-
-    let {table}=this.data
-    console.log(data);
-    table.forEach((v,i)=>{
-      if(v.name===data.type){
-        v.children.forEach(value=>{
-          if(value.id===data.id){
-            console.log(value);
-            value.complete=!value.complete
-          }
-        })
-      }
-    })
-    this.setData({table})
-
-
-
     if (info.id) {
       data.id = info.id
       // 有ID才能打钩，先对页面进行更新，避免发请求过慢导致卡顿
@@ -515,7 +495,7 @@ Page({
         year: new Date().getFullYear()
       }
     })
-    if (res.statusCode === 200) {
+    if (res.statusCode === 200&&res.data.result) {
       let {
         result
       } = res.data

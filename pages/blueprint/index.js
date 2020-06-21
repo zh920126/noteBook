@@ -75,7 +75,7 @@ Page({
         name: '起止时间'
       },
       {
-        name: '完成打√'
+        name: '完成打勾'
       },
     ],
     cateList: [{
