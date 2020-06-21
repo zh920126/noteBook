@@ -179,21 +179,32 @@ Page({
       }
     ],
     week: '',
-    year: new Date().getFullYear()
+    year: new Date().getFullYear(),
+    time:new Date().getTime()
+  },
+  // 去周计划
+  goToDaygoals(){
+    let {time,week}=this.data
+    wx.navigateTo({
+      url: `/pages/daygoals/index?time=${time}&week=${week}`,
+    });
   },
   // 上一周
   handleLastWeek() {
     let {
       week,
-      year
+      year,
+      time
     } = this.data
     if (week - 1 === 0) {
       week = 53
       year--
     }
+    time=new Date().getTime()-60*60*24*7*1000
     this.setData({
       week: week - 1,
-      year
+      year,
+      time
     })
     this.getUserMsg()
     this.getWeekPlan()
@@ -202,15 +213,18 @@ Page({
   handleNextWeek() {
     let {
       week,
-      year
+      year,
+      time
     } = this.data
     if (week + 1 === 53) {
       week = 0
       year++
     }
+    time=new Date().getTime()+60*60*24*7*1000
     this.setData({
       week: week + 1,
-      year
+      year,
+      time
     })
     this.getUserMsg()
     this.getWeekPlan()

@@ -234,11 +234,37 @@ Page({
       {
         parentType:'今日总结',
         content:''
+      }
+    ],
+    weekDays:[
+      {
+        type:1,
+        day:'周一',
       },
       {
-        parentType:'今日总结',
-        content:''
-      }
+        type:2,
+        day:'周二',
+      },
+      {
+        type:3,
+        day:'周三',
+      },
+      {
+        type:4,
+        day:'周四',
+      },
+      {
+        type:5,
+        day:'周五',
+      },
+      {
+        type:6,
+        day:'周六',
+      },
+      {
+        type:7,
+        day:'周日',
+      },
     ],
     day:'周一',
     week:'',
@@ -700,6 +726,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
     let{week,year}=options
     this.setData({
       week,year

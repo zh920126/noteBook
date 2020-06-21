@@ -20,7 +20,7 @@
   align-items: center;
   justify-content: center;
 }
-.tabbar .weekTab > view .on {
+.tabbar .weekTab .on {
   background: #2ECE94;
   color: #fff;
 }

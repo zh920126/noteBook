@@ -1,8 +1,8 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
   <view class="weekTab">
-    <view>周总结</view>
-    <view>周计划</view>
+    <view class="on">周总结</view>
+    <view bind:tap="goToDaygoals">周计划</view>
   </view>
   <view class="week-change">
   <view class="tab" bind:tap="handleLastWeek">上周</view>

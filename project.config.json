@@ -60,8 +60,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/weekgoals/index",
-					"pathName": "pages/weekgoals/index",
+					"name": "pages/daygoals/index",
+					"pathName": "pages/daygoals/index",
 					"query": "",
 					"scene": null
 				},

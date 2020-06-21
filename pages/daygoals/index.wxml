@@ -1,11 +1,38 @@
-<!-- 日计划页面 -->
+<!-- 顶部tab栏 -->
+<view class="tabbar">
+  <view class="weekTab">
+    <view >周总结</view>
+    <view class="on" bind:tap="goToDaygoals">周计划</view>
+  </view>
+  <view class="week-change">
+  <view class="tab" bind:tap="handleLastWeek">上周</view>
+  <view class="tab">
+    第{{week}}周
+  </view>
+  <view class="tab" bind:tap="handleNextWeek">下周</view>
+  </view>
+</view>
+<!-- 周一-周日tab栏 -->
+<view class="days-tab">
+<block wx:for="{{weekDays}}" wx:key="{{item.type}}">
+  <view class="days on">{{item.day}}</view>
+</block>
+</view>
+<!-- 日期选择 -->
+<view class="date">
+  <picker mode="date">
+    <text>2020年6月22日</text>
+  </picker>
+    <view class="iconfont icon-rili"></view>
+</view>
+<!-- 每日数据 -->
 <view class="daily">
   <view class="daily-left">
-    <view class="daily-left-content">
+    <!-- <view class="daily-left-content">
         <view class="daily-left-title">{{day}}</view>
         <view class="daily-left-title">计划</view>
         <view class="daily-left-title">年月日</view>
-    </view>
+    </view> -->
     <view class="category">
       <view class="cateName">按ABC分类</view>
       <view class="cateName">起止时间</view>
@@ -13,7 +40,7 @@
         <view >今天事项 要事第一</view>
         <view >A类最重要 B类其次 C类次重要</view>
       </view>
-      <view class="cateName">完成打'√'</view>
+      <view class="cateName">完成打勾</view>
     </view>
     <!-- 内容部分 -->
     <block wx:for="{{todayThings}}" wx:key="index">
@@ -34,7 +61,6 @@
     </view>
     </block>
   </view>
-  <view class="daily-center"></view>
   <view class="daily-right">
     <view class="daily-right-title">
       <text >总结</text>
@@ -46,9 +72,4 @@
       </view>
     </block>
   </view>
-</view>
-<!-- 底部导航 -->
-<view class="footer">
-  <view class="footer-left" bind:tap="handleLastDay">上一页</view>
-  <view class="footer-right" bind:tap="handleNextDay">下一页</view>
 </view>
