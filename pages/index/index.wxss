@@ -47,6 +47,7 @@
   height: 615rpx;
   margin: -124rpx auto 0;
   z-index: 2;
+  background: #fff;
   border-radius: 7rpx;
   border-bottom: 16rpx solid #5FAE89;
   box-sizing: border-box;

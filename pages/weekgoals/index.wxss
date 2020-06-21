@@ -1,180 +1,220 @@
 .tabbar {
-  margin: 30rpx 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-}
-.tabbar .tab {
-  width: 120rpx;
   height: 50rpx;
-  border: 1rpx solid #000;
-  border-radius: 10rpx;
+  padding: 7rpx 14rpx;
+  font-size: 15rpx;
+}
+.tabbar .weekTab {
+  display: flex;
+  height: 36rpx;
+  width: 252rpx;
+  border-radius: 5rpx;
+  color: #404040;
+  background: #f8f8f8;
+}
+.tabbar .weekTab > view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tabbar .weekTab > view .on {
+  background: #2ECE94;
+  color: #fff;
+}
+.tabbar .week-change {
+  width: 378rpx;
+  height: 36rpx;
+  display: flex;
+  border-radius: 5rpx;
+}
+.tabbar .week-change .tab {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24rpx;
-  color: #219d9c;
-  box-sizing: border-box;
 }
-.tabbar .tab:last-child {
-  width: 150rpx;
-}
-.tabbar .tab .picker {
-  width: 100%;
-  height: 100%;
-  font-size: 18rpx;
+.tabbar .week-change .tab:nth-child(2) {
+  background: #f8f8f8;
+  color: #2ECE94;
 }
 .week {
   display: flex;
-  border: 20rpx solid #00cccc;
-  font-size: 22rpx;
-  color: #219d9c;
+  justify-content: space-between;
+  margin: 0 14rpx;
 }
 .week-left {
-  flex: 2;
+  width: 221rpx;
+  border: 1rpx solid #1C5E55;
+  box-sizing: border-box;
 }
 .week-left-item {
-  height: 50rpx;
-  border: 1rpx solid #a6a6a6;
-  border-top: 0rpx;
-  box-sizing: border-box;
+  height: 54rpx;
+  border-bottom: 1rpx solid #1C5E55;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
-.week-left-item:nth-child(1) {
-  border-top: 1rpx solid #a6a6a6;
+.week-left-item:nth-child(1),
+.week-left-item:nth-child(2) {
+  height: 40rpx;
+  background: #22705D;
+  box-sizing: border-box;
+  font-size: 13rpx;
+  color: #fff;
+}
+.week-left-item:nth-child(9),
+.week-left-item:nth-child(13),
+.week-left-item:nth-child(17) {
+  background: #22705D;
+  font-size: 13rpx;
+  box-sizing: border-box;
+  color: #fff;
+}
+.week-left-item:last-child {
+  border-bottom: 0rpx;
 }
 .week-left-item .mytext {
   width: 100%;
   height: 100%;
   text-align: center;
 }
-.week-center {
-  width: 20rpx;
-  background: #00cccc;
-}
 .week-right {
-  flex: 3;
+  width: 491rpx;
+  border: 1rpx solid #1C5E55;
+  box-sizing: border-box;
 }
 .week-right-title {
   display: flex;
-  height: 100rpx;
-  border: 1rpx solid #a6a6a6;
+  height: 80rpx;
+  background: #22705D;
+  font-size: 13rpx;
+  color: #fff;
 }
 .week-right-title .left {
-  width: 50rpx;
+  width: 36rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .week-right-title .right {
-  width: 60rpx;
+  width: 90rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .week-right-title .center {
-  flex: 1;
-  border-left: 1rpx solid #a6a6a6;
-  border-right: 1rpx solid #a6a6a6;
+  width: 365rpx;
   font-size: 15rpx;
+  border-left: 1rpx solid #1C5E55;
+  border-right: 1rpx solid #1C5E55;
   display: flex;
-  justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 .week-right-title .center .icon {
-  font-size: 22rpx;
+  margin: 0 36rpx 0 26rpx;
+}
+.week-right-title .center .description {
+  font-size: 12rpx;
 }
 .week-right-content {
   display: flex;
-  height: 50rpx;
-  border: 1rpx solid #a6a6a6;
-  border-top: 0rpx;
-  box-sizing: border-box;
+  height: 54rpx;
+}
+.week-right-content:last-child .left,
+.week-right-content:last-child .right,
+.week-right-content:last-child .center {
+  border-bottom: 0rpx;
 }
 .week-right-content .left {
-  width: 50rpx;
+  width: 36rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1rpx solid #1C5E55;
 }
 .week-right-content .right {
-  width: 60rpx;
+  width: 90rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1rpx solid #1C5E55;
 }
 .week-right-content .center {
-  flex: 1;
-  border-left: 1rpx solid #a6a6a6;
-  border-right: 1rpx solid #a6a6a6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 365rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #1C5E55;
+  border-top: 0rpx;
 }
 .week-right-content .center .mytext {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
   text-align: center;
 }
 .footer {
+  height: 241rpx;
   display: flex;
-  border: 20rpx solid #00cccc;
-  border-top: 0rpx;
-  color: #219d9c;
+  justify-content: space-between;
+  margin: 9rpx 14rpx 0;
 }
 .footer-left {
-  flex: 2;
-  border: 1rpx solid #a6a6a6;
-}
-.footer-left image {
-  width: 100%;
-}
-.footer-center {
-  width: 20rpx;
-  background: #00cccc;
+  width: 222rpx;
+  background: #2ECE94;
+  font-size: 49rpx;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .footer-right {
-  flex: 3;
-  font-size: 18rpx;
+  width: 491rpx;
+  border: 1rpx solid #1C5E55;
+  box-sizing: border-box;
 }
 .footer-right-title {
   display: flex;
-  height: 110rpx;
-  border: 1rpx solid #a6a6a6;
+  height: 79rpx;
+  background: #22705D;
+  font-size: 13rpx;
+  color: #fff;
 }
 .footer-right-title .title-left {
-  flex: 1.1;
-  border-right: 1rpx solid #a6a6a6;
+  width: 126rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .footer-right-title .title-right {
-  flex: 3;
+  width: 231rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12rpx;
 }
 .footer-right-content {
   display: flex;
-  height: 50rpx;
+  height: 54rpx;
 }
 .footer-right-content .content-left {
-  flex: 1.1;
-  border: 1rpx solid #a6a6a6;
-  border-top: 0rpx;
+  width: 126rpx;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1rpx solid #1C5E55;
+  font-size: 13rpx;
+  color: #1C5E55;
+  box-sizing: border-box;
 }
 .footer-right-content .content-center,
 .footer-right-content .content-right {
-  flex: 1.5;
-  border: 1rpx solid #a6a6a6;
-  border-top: 0rpx;
-  border-left: 0rpx;
+  width: 182rpx;
+  border-bottom: 1rpx solid #1C5E55;
+  border-left: 1rpx solid #1C5E55;
 }
 .footer-right-content .content-center > view,
 .footer-right-content .content-right > view {
@@ -189,11 +229,4 @@
   width: 100%;
   height: 100%;
   text-align: center;
-}
-.footer-url {
-  display: flex;
-  background: #00cccc;
-  padding-bottom: 20rpx;
-  justify-content: space-around;
-  align-items: center;
 }

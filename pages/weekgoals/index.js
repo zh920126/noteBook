@@ -25,6 +25,10 @@ Page({
       {
         content: '',
         type: '目标完成情况',
+      },
+      {
+        content: '',
+        type: '目标完成情况',
       }
     ],
     reason: [{
@@ -67,6 +71,11 @@ Page({
       },
     ],
     weeklyPlan: [{
+        content: '',
+        type: '本周目标',
+        complete: false
+      },
+      {
         content: '',
         type: '本周目标',
         complete: false
@@ -603,6 +612,11 @@ Page({
           content: '',
           type: '本周目标',
           complete: false
+        },
+        {
+          content: '',
+          type: '本周目标',
+          complete: false
         }
       ]
       otherPlan=[
@@ -682,6 +696,10 @@ Page({
           {
             content: '',
             type: '目标完成情况',
+          },
+          {
+            content: '',
+            type: '目标完成情况',
           }
         ],
         reason = [{
@@ -730,7 +748,7 @@ Page({
       for (let i = 0; i < arr.length; i++) {
         if (arr[i].type === '目标完成情况') {
           weekPerformance[j]=arr[i]
-            weekPerformance.length = 5
+            weekPerformance.length = 6
             j++
         }
         if (arr[i].type === '未完成目标的原因及障碍') {

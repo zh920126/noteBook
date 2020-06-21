@@ -1,11 +1,15 @@
 <!-- 顶部tab栏 -->
 <view class="tabbar">
+  <view class="weekTab">
+    <view>周总结</view>
+    <view>周计划</view>
+  </view>
+  <view class="week-change">
   <view class="tab" bind:tap="handleLastWeek">上周</view>
-  <view class="tab" bind:tap="handleNextWeek">下周</view>
   <view class="tab">
-    <picker mode="date" value="{{date}}" bindchange="bindDateChange">
-      <view class="picker">{{year}} 年第 {{week}} 周</view>
-    </picker>
+    第{{week}}周
+  </view>
+  <view class="tab" bind:tap="handleNextWeek">下周</view>
   </view>
 </view>
 <!-- 表格数据部分 -->
@@ -38,8 +42,6 @@
     </view>
     </block>
   </view>
-  <!--中间条纹线 -->
-  <view class="week-center"></view>
   <!-- 右边表格 -->
   <view class="week-right">
     <view class="week-right-title">
@@ -51,7 +53,7 @@
         <view class="description">
           <view>1.请在上周五的规划填写</view>
           <view>2.按目标重要程度规划有限顺序</view>
-          <view>3.完成一项,在完成时限处打钩'√'</view>
+          <view>3.完成一项,在完成时限处打勾</view>
         </view>
       </view>
       <view class="right">完成期限</view>
@@ -69,14 +71,13 @@
 </view>
 <!-- 底部图片以及其他计划部分 -->
   <view class="footer">
-    <view class="footer-left">
+    <view class="footer-left">广告位
     </view>
-    <view class="footer-center"></view>
     <view class="footer-right">
       <view class="footer-right-title">
         <view class="title-left">本周其他目标</view>
         <view class="title-right">
-          请注意规划你的生活，平衡你的人生，以下目标做到打'√',本周有特别的日子吗？请标注(生日/节日/纪念日)
+          请注意规划你的生活，平衡你的人生，以下目标做到打'√',本周有特别的日子吗？请标注 (生日/节日/纪念日)
         </view>
       </view>
       <block wx:for="{{otherPlan}}" wx:key="type">
@@ -91,10 +92,4 @@
       </view>
       </block>
     </view>
-  </view>
-  <!-- 底部跳转链接 -->
-  <view class="footer-url">
-    <text/>
-    <navigator class="url" url="/pages/daygoals/index?year={{year}}&week={{week}}">下一页
-    </navigator>
   </view>
